@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "teamfighttacticsapp-90379": {
+      "hosting": {
+        "TeamfightTacticsAPP": [
+          "teamfighttacticsapp-90379"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "teamfighttacticsapp-90379"
+  }
+}

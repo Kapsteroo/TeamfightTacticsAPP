@@ -105,6 +105,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "TeamfightTacticsAPP:build:production",
+            "firebaseProject": "teamfighttacticsapp-90379",
+            "firebaseHostingSite": "teamfighttacticsapp-90379"
+          }
         }
       }
     }
