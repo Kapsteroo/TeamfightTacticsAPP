@@ -26,9 +26,9 @@ import { PatchNotesComponent } from './patch-notes/patch-notes.component';
 import { TeamCompsComponent } from './team-comps/team-comps.component';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { TeamCompBuilderComponent } from './team-comp-builder/team-comp-builder.component';
-import { ChampionsComponent } from './champions/champions.component';
-import { ItemsComponent } from './items/items.component';
-import { TraitsComponent } from './traits/traits.component';
+import { ChampionsComponent } from './champions-list/champions.component';
+import { ItemsComponent } from './items-list/items.component';
+import { TraitsComponent } from './traits-list/traits.component';
 
 @NgModule({
   declarations: [
