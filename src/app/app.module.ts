@@ -22,11 +22,25 @@ import { provideMessaging,getMessaging } from '@angular/fire/messaging';
 import { providePerformance,getPerformance } from '@angular/fire/performance';
 import { provideRemoteConfig,getRemoteConfig } from '@angular/fire/remote-config';
 import { provideStorage,getStorage } from '@angular/fire/storage';
+import { PatchNotesComponent } from './patch-notes/patch-notes.component';
+import { TeamCompsComponent } from './team-comps/team-comps.component';
+import { FavoritesComponent } from './favorites/favorites.component';
+import { TeamCompBuilderComponent } from './team-comp-builder/team-comp-builder.component';
+import { ChampionsComponent } from './champions/champions.component';
+import { ItemsComponent } from './items/items.component';
+import { TraitsComponent } from './traits/traits.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MainNavComponent
+    MainNavComponent,
+    PatchNotesComponent,
+    TeamCompsComponent,
+    FavoritesComponent,
+    TeamCompBuilderComponent,
+    ChampionsComponent,
+    ItemsComponent,
+    TraitsComponent
   ],
   imports: [
     BrowserModule,
