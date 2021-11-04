@@ -7,10 +7,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MainNavComponent } from './main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
+import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import {
@@ -30,10 +33,15 @@ import {
   getRemoteConfig,
 } from '@angular/fire/remote-config';
 import { provideStorage, getStorage } from '@angular/fire/storage';
+import { HomeComponent } from './home/home.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
+import { LogInComponent } from './log-in/log-in.component';
 
 @NgModule({
-  declarations: [AppComponent, MainNavComponent, routingComponents],
+  declarations: [AppComponent, MainNavComponent, routingComponents, HomeComponent, SignUpComponent, LogInComponent],
   imports: [
+    MatCardModule,
+    MatInputModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -43,6 +51,8 @@ import { provideStorage, getStorage } from '@angular/fire/storage';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
+    FormsModule,
+    ReactiveFormsModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAnalytics(() => getAnalytics()),
     provideAuth(() => getAuth()),

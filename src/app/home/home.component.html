@@ -1,0 +1,14 @@
+<button class="right-sided20" mat-raised-button color="primary" routerLink="/sign-up">
+    Sign in
+</button>
+<button class="right-sided220" mat-raised-button color="primary" routerLink="/sign-up">
+    Log in
+</button>
+
+<div *ngIf="(afAuth.user | async)">
+    User is logged in
+</div>
+
+<div *ngIf="!(afAuth.user | async)">
+    User is not logged in
+</div>
