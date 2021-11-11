@@ -9,8 +9,8 @@ import { TeamCompsComponent } from './team-comps/team-comps.component';
 import { TraitsComponent } from './traits-list/traits.component';
 import { HomeComponent } from './home/home.component';
 import { LogInComponent } from './log-in/log-in.component';
-import { SignUpComponent } from './sign-up/sign-up.component';
 import { AuthGuard } from './services/auth.guard';
+import {SignUpComponent} from "./sign-up/sign-up.component";
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },

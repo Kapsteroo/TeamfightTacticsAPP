@@ -34,11 +34,19 @@ import {
 } from '@angular/fire/remote-config';
 import { provideStorage, getStorage } from '@angular/fire/storage';
 import { HomeComponent } from './home/home.component';
-import { SignUpComponent } from './sign-up/sign-up.component';
 import { LogInComponent } from './log-in/log-in.component';
+import { AngularFireModule } from '@angular/fire/compat';
+import {SignUpComponent} from "./sign-up/sign-up.component";
 
 @NgModule({
-  declarations: [AppComponent, MainNavComponent, routingComponents, HomeComponent, SignUpComponent, LogInComponent],
+  declarations: [
+    AppComponent,
+    MainNavComponent,
+    routingComponents,
+    HomeComponent,
+    SignUpComponent,
+    LogInComponent
+  ],
   imports: [
     MatCardModule,
     MatInputModule,
@@ -53,6 +61,7 @@ import { LogInComponent } from './log-in/log-in.component';
     MatListModule,
     FormsModule,
     ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAnalytics(() => getAnalytics()),
     provideAuth(() => getAuth()),
