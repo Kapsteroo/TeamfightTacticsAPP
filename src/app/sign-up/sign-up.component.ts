@@ -39,7 +39,7 @@ export class SignUpComponent implements OnInit {
       .then((result) => {
         if (result == null)
           // null is success, false means there was an error
-          this.router.navigate(['/favorites']);
+          this.router.navigate(['/home']);
         else if (result.isValid == false)
           this.firebaseErrorMessage = result.message;
       })
