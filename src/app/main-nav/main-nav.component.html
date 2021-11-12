@@ -30,6 +30,19 @@
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <span><a href="/">TeamfightTacticsAPP</a></span>
+      <div *ngIf="!(afAuth.user | async)">
+        <button mat-raised-button color="primary" routerLink="/sign-up">
+           Sign in
+        </button>
+        <button mat-raised-button color="primary" routerLink="/log-in">
+           Log in
+        </button>
+      </div>
+      <div *ngIf="afAuth.user | async">
+        <button mat-raised-button color="primary" (click)="logout()">
+           Log out
+        </button>
+      </div>
     </mat-toolbar>
     <!-- Add Content Here -->
   </mat-sidenav-content>
