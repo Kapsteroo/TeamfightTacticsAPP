@@ -11,7 +11,8 @@ export class PatchService {
   patches: Observable<Patch[]>;
 
   constructor(public afs: AngularFirestore) {
-    this.patches = this.afs.collection('patches').valueChanges();
+    this.patchesCollection = afs.collection('patches');
+    this.patches = this.patchesCollection.valueChanges();
    }
 
   getPatches() {
