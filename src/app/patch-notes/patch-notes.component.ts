@@ -5,18 +5,16 @@ import { Patch } from '../models/patch';
 @Component({
   selector: 'app-patch-notes',
   templateUrl: './patch-notes.component.html',
-  styleUrls: ['./patch-notes.component.scss']
+  styleUrls: ['./patch-notes.component.scss'],
 })
 export class PatchNotesComponent implements OnInit {
   patches: Patch[];
 
-  constructor(private patchService: PatchService) { }
+  constructor(private patchService: PatchService) {}
 
   ngOnInit(): void {
-    this.patchService.getPatches().subscribe(patches => {
-      // console.log(patches);
+    this.patchService.getPatches().subscribe((patches) => {
       this.patches = patches;
-    })
+    });
   }
-
 }

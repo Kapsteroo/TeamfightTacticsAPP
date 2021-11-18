@@ -2,7 +2,12 @@
   <ul *ngFor="let patch of patches">
     <mat-card>
       <mat-card-title>{{ patch.title }} </mat-card-title>
-      <mat-card-content>{{ patch.description }}</mat-card-content>
+      <mat-card-content>
+        <div *ngFor="let description of patch.description">
+          {{ description }}
+          <br/>
+        </div>
+      </mat-card-content>
     </mat-card>
   </ul>
 </div>

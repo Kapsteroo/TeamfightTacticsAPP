@@ -18,5 +18,6 @@ export class PatchService {
   getPatches() {
     return this.patches;
   }
+
 }
 

@@ -36,7 +36,7 @@ import { provideStorage, getStorage } from '@angular/fire/storage';
 import { HomeComponent } from './home/home.component';
 import { LogInComponent } from './log-in/log-in.component';
 import { AngularFireModule } from '@angular/fire/compat';
-import { SignUpComponent } from "./sign-up/sign-up.component";
+import { SignUpComponent } from './sign-up/sign-up.component';
 import { PatchService } from './services/patch.service';
 
 @NgModule({
@@ -46,7 +46,7 @@ import { PatchService } from './services/patch.service';
     routingComponents,
     HomeComponent,
     SignUpComponent,
-    LogInComponent
+    LogInComponent,
   ],
   imports: [
     MatCardModule,
