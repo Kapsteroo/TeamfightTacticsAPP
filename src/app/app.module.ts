@@ -38,6 +38,7 @@ import { LogInComponent } from './log-in/log-in.component';
 import { AngularFireModule } from '@angular/fire/compat';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { PatchService } from './services/patch.service';
+import { AddPatchComponent } from './add-patch/add-patch.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { PatchService } from './services/patch.service';
     HomeComponent,
     SignUpComponent,
     LogInComponent,
+    AddPatchComponent,
   ],
   imports: [
     MatCardModule,
