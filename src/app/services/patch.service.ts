@@ -17,7 +17,7 @@ export class PatchService {
     this.patches = this.patchesCollection.snapshotChanges().pipe(map(changes => { //here we can get id from database (using value changes it could work)
       return changes.map(a => {
         const data = a.payload.doc.data() as Patch;
-        data.id = a.payload.doc.id;
+        // data.id = a.payload.doc.id;
         return data;
       });
     }));
@@ -25,6 +25,10 @@ export class PatchService {
 
   getPatches() {
     return this.patches;
+  }
+
+  addPatch(patch: Patch) {
+    this.patchesCollection.add(patch);
   }
 
 }

@@ -1,5 +1,6 @@
 export interface Patch {
-  id: string | undefined;
+  // id: string;
   title: string | undefined;
-  description: [] | undefined;
+  // description: [] | undefined;
+  description: Array<string>;
 }
