@@ -5,7 +5,6 @@ import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { MainNavComponent } from './main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
@@ -43,7 +42,6 @@ import { AddPatchComponent } from './add-patch/add-patch.component';
 @NgModule({
   declarations: [
     AppComponent,
-    MainNavComponent,
     routingComponents,
     HomeComponent,
     SignUpComponent,
