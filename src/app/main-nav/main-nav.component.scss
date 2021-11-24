@@ -20,6 +20,21 @@
   z-index: 1;
 }
 
+.div_button__nav { 
+  position: absolute;
+  right: 16px;
+  text-align: center;
+}
+
+.button__nav {
+  font-size: 18px;
+  margin-left: 8px;
+  padding: 8px 28px;
+  background-color: #990099;
+}
+.button__nav:hover {
+  background-color: #680e68;
+}
 
 mat-toolbar a {
   display: inline-block;
