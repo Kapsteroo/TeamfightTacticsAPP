@@ -1,54 +1,48 @@
-<div>
-<!-- <main-nav></main-nav> -->
-<mat-sidenav-container class="sidenav-container">
-  <mat-sidenav
-    #drawer
-    class="sidenav"
-    fixedInViewport
-    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-    [mode]="(isHandset$ | async) ? 'over' : 'side'"
-    [opened]="(isHandset$ | async) === false"
-  >
-    <mat-toolbar>Menu</mat-toolbar>
-    <mat-nav-list>
-      <a mat-list-item href="/patch-notes">Patch Notes DONE</a>
-      <a mat-list-item href="/team-comps">Team Comps TD</a>
-      <a mat-list-item href="/favorites">Favorites TD</a>
-      <a mat-list-item href="/team-comp-builder">Team Comp Builder TD</a>
-      <a mat-list-item href="/champions-list">Champions TD</a>
-      <a mat-list-item href="/traits-list">Traits TD</a>
-      <a mat-list-item href="/items-list">Items TD</a>
-    </mat-nav-list>
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <mat-toolbar color="primary">
-      <button
-        type="button"
-        aria-label="Toggle sidenav"
-        mat-icon-button
-        (click)="drawer.toggle()"
-        *ngIf="isHandset$ | async"
-      >
-        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-      </button>
-      <span><a href="/">TeamfightTacticsAPP</a></span>
-      <div class="div_button__nav" *ngIf="!(afAuth.user | async)">
-        <button class="button__nav" mat-raised-button routerLink="/sign-up">
-           Sign in
-        </button>
-        <button class="button__nav" mat-raised-button routerLink="/log-in">
-           Log in
-        </button>
-      </div>
-      <div *ngIf="afAuth.user | async">
-        <button class="button__nav" mat-raised-button (click)="logout()">
-           Log out
-        </button>
-      </div>
-    </mat-toolbar>
-    <!-- Add Content Here -->
-  </mat-sidenav-content>
-</mat-sidenav-container>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="app.component.scss" />
+    <link
+      href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css"
+      rel="stylesheet"
+    />
+    <title>TeamfightTacticsAPP</title>
+  </head>
+  <body>
+    <section class="header">
+      <nav>
+        <a href="/home"
+          ><img
+            src="https://upload.wikimedia.org/wikipedia/commons/f/f8/Teamfight_Tactics_logo.svg"
+        /></a>
+        <div class="nav-links">
+          <ul>
+            <li><a href="">PATCH NOTES</a></li>
+            <li><a href="">TEAM COMPS</a></li>
+            <li><a href="">FAVORITES</a></li>
+            <li><a href="">TEAM COMP BUILDER</a></li>
+            <li><a href="">CHAMPIONS</a></li>
+            <li><a href="">TRAITS</a></li>
+            <li><a href="">ITEMS</a></li>
+          </ul>
+        </div>
+        <i class="fa fa-bars"></i>
+      </nav>
 
-</div>
+      <div class="text-box">
+        <h1>Helper For The Best Auto-Chess Game</h1>
+        <p>
+          Here you can make your own compositions, check out every champion,
+          trait or item <br />
+          Be prepared to fight for your honor!
+        </p>
+        <a href="" class="hero-btn">Create Account</a>
+        <a href="" class="hero-btn">Login</a>
+      </div>
+    </section>
+  </body>
+</html>
 <router-outlet></router-outlet>

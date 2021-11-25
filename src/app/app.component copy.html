@@ -1,0 +1,52 @@
+<!-- <div>
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewport
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === false"
+  >
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item href="/patch-notes">Patch Notes DONE</a>
+      <a mat-list-item href="/team-comps">Team Comps TD</a>
+      <a mat-list-item href="/favorites">Favorites TD</a>
+      <a mat-list-item href="/team-comp-builder">Team Comp Builder TD</a>
+      <a mat-list-item href="/champions-list">Champions TD</a>
+      <a mat-list-item href="/traits-list">Traits TD</a>
+      <a mat-list-item href="/items-list">Items TD</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async"
+      >
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span><a href="/">TeamfightTacticsAPP</a></span>
+      <div class="div_button__nav" *ngIf="!(afAuth.user | async)">
+        <button class="button__nav" mat-raised-button routerLink="/sign-up">
+           Sign in
+        </button>
+        <button class="button__nav" mat-raised-button routerLink="/log-in">
+           Log in
+        </button>
+      </div>
+      <div *ngIf="afAuth.user | async">
+        <button class="button__nav" mat-raised-button (click)="logout()">
+           Log out
+        </button>
+      </div>
+    </mat-toolbar>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+</div> -->
+<router-outlet></router-outlet>
