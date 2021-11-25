@@ -38,6 +38,7 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { PatchService } from './services/patch.service';
 import { AddPatchComponent } from './add-patch/add-patch.component';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { AddPatchComponent } from './add-patch/add-patch.component';
     SignUpComponent,
     LogInComponent,
     AddPatchComponent,
+    NavBarComponent,
   ],
   imports: [
     MatCardModule,

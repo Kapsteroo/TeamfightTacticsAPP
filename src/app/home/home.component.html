@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+    <section class="header">
+        <div class="text-box">
+        <h1>Helper For The Best Auto-Chess Game</h1>
+        <p>
+          Here you can make your own compositions, check out every champion,
+          trait or item <br />
+          Be prepared to fight for your honor!
+        </p>
+        <div *ngIf="!(afAuth.user | async)">
+          <a href="/sign-up" class="hero-btn">Create Account</a>
+          <a href="/log-in" class="hero-btn">Login</a>
+        </div>
+        <div *ngIf="afAuth.user | async">
+          <a href="" class="hero-btn" (click)="logout()">Log out</a>
+        </div>
+      </div>
+        
+    </section>
+    
+</body>
+</html>
