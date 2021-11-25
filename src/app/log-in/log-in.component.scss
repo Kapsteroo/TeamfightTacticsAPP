@@ -1,5 +1,18 @@
-:host {
-    display: flex;
+// :host {
+//     display: flex;
+//     flex-direction: column;
+//     align-items: center;
+// }
+
+.card {
+    display:flex;
     flex-direction: column;
     align-items: center;
+    transform: translate(0,50%);
+    text-align: center;
+}
+
+.sign-card{
+    width: 250px;
+    background:#fdad00;
 }

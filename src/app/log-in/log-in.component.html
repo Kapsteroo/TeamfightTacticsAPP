@@ -1,33 +1,47 @@
-<mat-card>
-  <form [formGroup]="loginForm" (ngSubmit)="loginUser()" type="">
-    <p>
-      <mat-form-field appearance="outline">
-        <mat-label>Email</mat-label>
-        <input
-          autocomplete="off"
-          formControlName="email"
-          type="email"
-          matInput
-          placeholder="Email"
-        />
-      </mat-form-field>
-    </p>
-    <p>
-      <mat-form-field appearance="outline">
-        <mat-label>Password</mat-label>
-        <input
-          autocomplete="off"
-          formControlName="password"
-          type="password"
-          matInput
-          placeholder="Password"
-        />
-      </mat-form-field>
-    </p>
-    <div *ngIf="firebaseErrorMessage != ''" class="error-style">
-      <span>{{ firebaseErrorMessage }}Z</span>
-    </div>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Log in</title>
+  </head>
+  <body>
+    <div class="card">
+      <mat-card class="sign-card">
+        <form [formGroup]="loginForm" (ngSubmit)="loginUser()" type="">
+          <h1>Log In</h1>
+          <p>
+            <mat-form-field appearance="outline">
+              <mat-label>Email</mat-label>
+              <input
+                autocomplete="off"
+                formControlName="email"
+                type="email"
+                matInput
+                placeholder="Email"
+              />
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field appearance="outline">
+              <mat-label>Password</mat-label>
+              <input
+                autocomplete="off"
+                formControlName="password"
+                type="password"
+                matInput
+                placeholder="Password"
+              />
+            </mat-form-field>
+          </p>
+          <div *ngIf="firebaseErrorMessage != ''" class="error-style">
+            <span>{{ firebaseErrorMessage }}Z</span>
+          </div>
 
-    <button mat-raised-button color="primary">Login</button>
-  </form>
-</mat-card>
+          <button class="hero-btn2">Login</button>
+        </form>
+      </mat-card>
+    </div>
+  </body>
+</html>

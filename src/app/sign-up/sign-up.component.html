@@ -1,27 +1,58 @@
-<mat-card>
-    <form [formGroup]="signupForm" (ngSubmit)="signup()">
-        <p>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign up</title>
+  </head>
+  <body>
+    <div class="card">
+      <mat-card class="sign-card">
+        <form [formGroup]="signupForm" (ngSubmit)="signup()">
+          <h1>Sign Up</h1>
+          <p>
             <mat-form-field appearance="outline">
-                <mat-label>Full Name</mat-label>
-                <input autocomplete="off" formControlName="displayName" type="text" matInput placeholder="Display Name">
+              <mat-label>Full Name</mat-label>
+              <input
+                autocomplete="off"
+                formControlName="displayName"
+                type="text"
+                matInput
+                placeholder="Display Name"
+              />
             </mat-form-field>
-        </p>
-        <p>
+          </p>
+          <p>
             <mat-form-field appearance="outline">
-                <mat-label>Email</mat-label>
-                <input formControlName="email" type="email" matInput placeholder="Email">
+              <mat-label>Email</mat-label>
+              <input
+                formControlName="email"
+                type="email"
+                matInput
+                placeholder="Email"
+              />
             </mat-form-field>
-        </p>
-        <p>
+          </p>
+          <p>
             <mat-form-field appearance="outline">
-                <mat-label>Password</mat-label>
-                <input autocomplete="off" formControlName="password" type="password" matInput placeholder="Password">
+              <mat-label>Password</mat-label>
+              <input
+                autocomplete="off"
+                formControlName="password"
+                type="password"
+                matInput
+                placeholder="Password"
+              />
             </mat-form-field>
-        </p>
-        <div *ngIf="firebaseErrorMessage != ''" class="error-style">
+          </p>
+          <div *ngIf="firebaseErrorMessage != ''" class="error-style">
             <span>{{ firebaseErrorMessage }}</span>
-        </div>
+          </div>
 
-        <button mat-raised-button color="primary">Signup</button>
-    </form>
-</mat-card>
+          <button class="hero-btn2">Signup</button>
+        </form>
+      </mat-card>
+    </div>
+  </body>
+</html>
