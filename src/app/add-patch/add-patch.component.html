@@ -1,35 +1,37 @@
-<mat-card>
-  <mat-card-title>Add Patch</mat-card-title>
-  <form (ngSubmit)="onSubmit()" onkeydown="return event.key != 'Enter';">
-    <mat-form-field class="" appearance="fill">
-      <mat-label>Patch title</mat-label>
-      <input matInput [(ngModel)]="patch.title" name="title" />
-    </mat-form-field>
-    <br />
-    <mat-form-field class="" appearance="fill">
-      <mat-label>Patch description</mat-label>
-      <input matInput #desc />
-      <!-- <input matInput (keyup.enter)="onKeyUp($event)" #desc /> -->
-    </mat-form-field>
-    <mat-card-actions>
-      <button type="button" mat-button (click)="handleClear()">
-        Add description
-      </button>
-      <!-- <button mat-button (click)="addDescriptionToArray($event)">Add description</button> -->
-      <button mat-button type="submit">Submit</button>
-    </mat-card-actions>
-  </form>
-</mat-card>
-
-<div *ngIf="patch.description.length > 0">
-  <mat-card>
-    <mat-card-title>{{ patch.title }} </mat-card-title>
-    <mat-card-content>
-      <div *ngFor="let description of patch.description">
-        {{ description }}
-        <br />
-      </div>
-    </mat-card-content>
-    <mat-card-footer> Submit if you want to add new patch </mat-card-footer>
+<div class="new-patch-container">
+  <mat-card class="new-patch-card">
+    <mat-card-title>Add Patch</mat-card-title>
+    <form (ngSubmit)="onSubmit()" onkeydown="return event.key != 'Enter';">
+      <mat-form-field class="" appearance="fill">
+        <mat-label>Patch title</mat-label>
+        <input matInput [(ngModel)]="patch.title" name="title" />
+      </mat-form-field>
+      <br />
+      <mat-form-field class="" appearance="fill">
+        <mat-label>Patch description</mat-label>
+        <input matInput #desc />
+        <!-- <input matInput (keyup.enter)="onKeyUp($event)" #desc /> -->
+      </mat-form-field>
+      <mat-card-actions>
+        <button type="button" mat-button (click)="handleClear()">
+          Add description
+        </button>
+        <!-- <button mat-button (click)="addDescriptionToArray($event)">Add description</button> -->
+        <button mat-button type="submit">Submit</button>
+      </mat-card-actions>
+    </form>
   </mat-card>
+
+  <div *ngIf="patch.description.length > 0">
+    <mat-card class="card">
+      <mat-card-title>{{ patch.title }} </mat-card-title>
+      <mat-card-content>
+        <div *ngFor="let description of patch.description">
+          {{ description }}
+          <br />
+        </div>
+      </mat-card-content>
+      <mat-card-footer> Submit if you want to add new patch </mat-card-footer>
+    </mat-card>
+  </div>
 </div>

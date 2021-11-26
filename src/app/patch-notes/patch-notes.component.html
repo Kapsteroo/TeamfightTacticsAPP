@@ -1,8 +1,17 @@
-<app-add-patch></app-add-patch>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
 
-<div>
+<body> 
+  <app-add-patch></app-add-patch>
+<div class="patch-container">
   <ul *ngFor="let patch of patches">
-    <mat-card>
+    <mat-card class="card">
       <mat-card-title>{{ patch.title }} </mat-card-title>
       <mat-card-content>
         <div *ngFor="let description of patch.description">
@@ -13,3 +22,6 @@
     </mat-card>
   </ul>
 </div>
+
+</body>
+</html>
