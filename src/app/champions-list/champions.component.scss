@@ -1,0 +1,26 @@
+.container {
+    display: flex;
+    background-color: brown;
+    margin-top: 200px;
+    align-items: center;
+    height: 600px;
+    justify-content: space-between;
+}
+
+#champSelector {
+    padding: 20px;
+    margin-left: 30px;
+    background-color: cadetblue;
+    width: 350px;
+    display: block;
+    height: 555px;
+}
+
+#champInfo {
+    padding: 20px;
+    margin-right: 20px;
+    background-color: chartreuse;
+    width: 800px;
+    display: block;
+    height: 555px;
+}
