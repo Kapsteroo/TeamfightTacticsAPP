@@ -1,0 +1,35 @@
+.container {
+    display: flex;
+    background-color: brown;
+    margin-top: 200px;
+    align-items: center;
+    height: 600px;
+    justify-content: space-between;
+}
+
+#baseItemSelector {
+    padding: 20px;
+    margin-left: 30px;
+    background-color: cadetblue;
+    width: 350px;
+    display: block;
+    height: 133px;
+}
+
+#combinedItemSelector {
+    padding: 20px;
+    margin-left: 30px;
+    background-color: rgb(23, 3, 207);
+    width: 350px;
+    display: block;
+    height: 333px;
+}
+
+#itemInfo {
+    padding: 20px;
+    margin-right: 20px;
+    background-color: chartreuse;
+    width: 800px;
+    display: block;
+    height: 555px;
+}
