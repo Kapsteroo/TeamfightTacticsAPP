@@ -8,9 +8,13 @@
   </head>
   <body>
     <div class="container">
-        <div>
-      <div id="baseItemSelector"><span>Base item select</span></div>
-      <div id="combinedItemSelector"><span>Combined item select</span></div>
+      <div class="select-item">
+        <div class="baseItemSelector">
+          <ul *ngFor="let baseItem of baseItems">
+            <img src="{{ baseItem.image }}" width="48" height="48"/>
+          </ul>
+        </div>
+        <div class="combinedItemSelector">Combined item select</div>
       </div>
       <div id="itemInfo"><span>Item Info</span></div>
     </div>

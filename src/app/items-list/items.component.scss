@@ -1,28 +1,28 @@
 .container {
     display: flex;
     background-color: brown;
-    margin-top: 200px;
+    margin-top: 120px;
     align-items: center;
     height: 600px;
     justify-content: space-between;
 }
 
-#baseItemSelector {
+.baseItemSelector {
     padding: 20px;
     margin-left: 30px;
     background-color: cadetblue;
-    width: 350px;
+    width: 60vh;
     display: block;
-    height: 133px;
+    height: 19vh;
 }
 
-#combinedItemSelector {
+.combinedItemSelector {
     padding: 20px;
     margin-left: 30px;
     background-color: rgb(23, 3, 207);
     width: 350px;
     display: block;
-    height: 333px;
+    height: 340px;
 }
 
 #itemInfo {
@@ -32,4 +32,10 @@
     width: 800px;
     display: block;
     height: 555px;
+}
+
+ul {
+  display: flexbox;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
