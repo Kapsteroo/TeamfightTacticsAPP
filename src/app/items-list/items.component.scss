@@ -7,11 +7,14 @@
     justify-content: space-between;
 }
 
+.select-item {
+    width: 60vh;
+}
+
 .baseItemSelector {
     padding: 20px;
     margin-left: 30px;
     background-color: cadetblue;
-    width: 60vh;
     display: block;
     height: 19vh;
 }
@@ -20,7 +23,6 @@
     padding: 20px;
     margin-left: 30px;
     background-color: rgb(23, 3, 207);
-    width: 350px;
     display: block;
     height: 340px;
 }
@@ -35,7 +37,8 @@
 }
 
 ul {
-  display: flexbox;
+  display: inline;
+  padding: 5px;
   flex-direction: row;
   flex-wrap: wrap;
 }
