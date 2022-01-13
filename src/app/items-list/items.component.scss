@@ -1,4 +1,4 @@
-.container {
+.items-container {
     display: flex;
     background-color: brown;
     margin-top: 120px;
@@ -27,7 +27,7 @@
     height: 340px;
 }
 
-#itemInfo {
+.items-info-container {
     padding: 20px;
     margin-right: 20px;
     background-color: chartreuse;
@@ -41,4 +41,10 @@ ul {
   padding: 5px;
   flex-direction: row;
   flex-wrap: wrap;
+}
+
+button {
+    height: 48px;
+    border: 0;
+    cursor: pointer;
 }

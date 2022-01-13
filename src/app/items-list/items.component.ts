@@ -13,6 +13,7 @@ export class ItemsComponent implements OnInit {
 
   baseItems: BaseItem[];
   combinedItems: CombinedItem[];
+  chosenItem: BaseItem;
 
   constructor(private baseItemService: BaseItemService, private combinedItemService: CombinedItemService) { }
 
@@ -25,4 +26,8 @@ export class ItemsComponent implements OnInit {
     });
   }
 
+  chooseItem( chosenItem: BaseItem) {
+    this.chosenItem = chosenItem;
+    console.log( chosenItem )
+  }
 }
