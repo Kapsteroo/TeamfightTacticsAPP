@@ -5,14 +5,14 @@ import {
 } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { CombinedItem } from '../models/combinedItem';
+import { Item } from '../models/item';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CombinedItemService {
-  combinedItemsCollection: AngularFirestoreCollection<CombinedItem>;
-  combinedItems: Observable<CombinedItem[]>;
+  combinedItemsCollection: AngularFirestoreCollection<Item>;
+  combinedItems: Observable<Item[]>;
 
   constructor(public afs: AngularFirestore) {
     this.combinedItemsCollection = afs
@@ -22,7 +22,7 @@ export class CombinedItemService {
     this.combinedItems = this.combinedItemsCollection.snapshotChanges().pipe(
       map((changes) => {
         return changes.map((a) => {
-          const data = a.payload.doc.data() as CombinedItem;
+          const data = a.payload.doc.data() as Item;
           return data;
         });
       })

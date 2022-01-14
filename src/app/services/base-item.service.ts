@@ -5,21 +5,21 @@ import {
 } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { BaseItem } from '../models/baseItem';
+import { Item } from '../models/item';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BaseItemService {
-  baseItemsCollection: AngularFirestoreCollection<BaseItem>;
-  baseItems: Observable<BaseItem[]>;
+  baseItemsCollection: AngularFirestoreCollection<Item>;
+  baseItems: Observable<Item[]>;
 
   constructor(public afs: AngularFirestore) {
     this.baseItemsCollection = afs.collection('items').doc('baseItems').collection('baseItems');
     this.baseItems = this.baseItemsCollection.snapshotChanges().pipe(
       map((changes) => {
         return changes.map((a) => {
-          const data = a.payload.doc.data() as BaseItem;
+          const data = a.payload.doc.data() as Item;
           return data;
         });
       })
