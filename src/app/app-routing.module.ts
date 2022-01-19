@@ -11,6 +11,7 @@ import { HomeComponent } from './home/home.component';
 import { LogInComponent } from './log-in/log-in.component';
 import { AuthGuard } from './services/auth.guard';
 import {SignUpComponent} from "./sign-up/sign-up.component";
+import { ClassesComponent } from './classes-list/classes.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path: 'champions-list', component: ChampionsComponent },
   { path: 'items-list', component: ItemsComponent },
   { path: 'traits-list', component: TraitsComponent },
+  { path: 'classes-list', component: ClassesComponent },
   { path: '**', component: HomeComponent },
 ];
 
@@ -42,5 +44,6 @@ export const routingComponents = [
   TeamCompBuilderComponent,
   ChampionsComponent,
   TraitsComponent,
+  ClassesComponent,
   ItemsComponent
 ];

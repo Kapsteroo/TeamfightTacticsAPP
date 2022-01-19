@@ -12,7 +12,6 @@ export class AddPatchComponent implements OnInit {
   patch: Patch = {
     title: '',
     description: [],
-    // id: ''
   };
   newDescription: '';
 
@@ -20,23 +19,12 @@ export class AddPatchComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  // onKeyUp(x: any) {
-  //   this.newDescription = x.target.value;
-  //   console.log(this.newDescription);
-  //   this.patch.description.push(this.newDescription);
-  // }
-
   handleClear() {
     this.newDescription = this.inputDesc.nativeElement.value;
     console.log(this.newDescription);
     this.patch.description.push(this.newDescription);
     this.inputDesc.nativeElement.value = '';
   }
-  // addDescriptionToArray(x: any) {
-  //   this.newDescription = x.target.value;
-  //   console.log(this.newDescription);
-  //   this.patch.description.push(this.newDescription);
-  // }
 
   onSubmit() {
     if (this.patch.title != '') {

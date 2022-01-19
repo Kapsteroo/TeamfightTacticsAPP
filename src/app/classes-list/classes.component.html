@@ -4,28 +4,28 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>traits</title>
+    <title>classes</title>
   </head>
   <body>
     <div class="tables-container">
       <table class="trait-table center">
         <thead>
           <tr>
-            <th>Trait</th>
+            <th>Class</th>
             <th>Bonus</th>
             <th>Bonus description</th>
             <th>Units</th>
           </tr>
         </thead>
-        <tbody *ngFor="let trait of traits">
+        <tbody *ngFor="let class of classes">
           <tr>
             <td>
-              <b>{{ trait.name }}</b>
+              <b>{{ class.name }}</b>
             </td>
-            <td>{{ trait.bonus }}</td>
+            <td>{{ class.bonus }}</td>
             <td>
               <table>
-                <tr *ngFor="let bonusDesc of trait.bonusDesc">
+                <tr *ngFor="let bonusDesc of class.bonusDesc">
                   {{
                     bonusDesc
                   }}

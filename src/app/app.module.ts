@@ -39,6 +39,7 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { PatchService } from './services/patch.service';
 import { AddPatchComponent } from './add-patch/add-patch.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { ClassesComponent } from './classes-list/classes.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
     LogInComponent,
     AddPatchComponent,
     NavBarComponent,
+    ClassesComponent,
   ],
   imports: [
     MatCardModule,
