@@ -32,10 +32,15 @@
             chosenItem.name
           }}</mat-card-title>
           <mat-card-content class="chosen-item-content">
-            <img src="{{ chosenItem.image }}" width="100" border="7px" /><br />
+            <img src="{{ chosenItem.image }}" border="7px" width="100px"/><br />
             <span class="chosen-item-desc">{{ chosenItem.description }}</span>
             <div *ngIf="chosenItem.component1 != null" font-size="52">
               Recipe: <br />
+              <img src="{{ itemComponent1.image }}" class="item-image"/>
+              <img
+                src="https://firebasestorage.googleapis.com/v0/b/teamfighttacticsapp-90379.appspot.com/o/others%2Fplus.png?alt=media&token=605c0f62-9bea-43c4-93e2-f448a1dd99d1" width="70px"
+              />
+              <img src="{{ itemComponent2.image }}" class="item-image" />
             </div>
           </mat-card-content>
         </div>

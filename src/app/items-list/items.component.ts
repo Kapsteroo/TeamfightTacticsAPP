@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 import { Item } from '../models/item';
 import { BaseItemService } from '../services/base-item.service';
 import { CombinedItemService } from '../services/combined-item.service';
@@ -15,7 +13,7 @@ export class ItemsComponent implements OnInit {
   baseItems: Item[];
   combinedItems: Item[];
   chosenItem: Item;
-  itemComponent1: Observable<Item>;
+  itemComponent1: Item;
   itemComponent2: Item;
 
   constructor(
@@ -35,25 +33,25 @@ export class ItemsComponent implements OnInit {
 
   chooseItem(chosenItem: Item) {
     this.chosenItem = chosenItem;
-    console.log(chosenItem);
     if (chosenItem.component1 != null) {
-      const doc = this.afs
+      this.afs
         .collection('items')
         .doc('baseItems')
         .collection('baseItems')
         .doc(chosenItem.component1)
-        .get();
-      
-      // this.itemComponent1 = snapshot.pipe(
-      //   map((changes) => {
-      //     return changes.get((a) => {
-      //       const data = a.payload.doc.data() as Item;
-      //       return data;
-      //     });
-      //   })
-      // );
-      
-      console.log(doc);
+        .valueChanges()
+        .subscribe((itemComponent1) => {
+          this.itemComponent1 = itemComponent1 as Item;
+        });
+      this.afs
+        .collection('items')
+        .doc('baseItems')
+        .collection('baseItems')
+        .doc(chosenItem.component2)
+        .valueChanges()
+        .subscribe((itemComponent2) => {
+          this.itemComponent2 = itemComponent2 as Item;
+        });
     }
   }
 }
