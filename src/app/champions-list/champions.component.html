@@ -26,8 +26,52 @@
             <span class="champ-name">{{ chosenChampion.name }}</span>
             <span class="trait-name"
               ><img src="{{ trait.traitImage }}" />
-              {{ chosenChampion.trait }}
+              {{ trait.name }}
             </span>
+            <span class="trait-name"
+              ><img src="{{ champClass.classImage }}" />
+              {{ champClass.name }}
+            </span>
+            <span *ngIf="chosenChampion.class2 != null" class="trait-name"
+              ><img src="{{ champClass2.classImage }}" />
+              {{ champClass2.name }}
+            </span>
+          </div>
+          <div class="champ-stats-container">
+            <div class="champ-stats">
+              <b>STATS</b>
+              <ul>
+                <li>Cost: {{ chosenChampion.cost }}</li>
+                <li>Health: {{ chosenChampion.health }}</li>
+                <li>Mana: {{ chosenChampion.mana }}</li>
+                <li>Armor: {{ chosenChampion.armor }}</li>
+                <li>Magic Resistance: {{ chosenChampion.mr }}</li>
+                <li>DPS: {{ chosenChampion.dps }}</li>
+                <li>Damage: {{ chosenChampion.damage }}</li>
+                <li>Attack Speed: {{ chosenChampion.atkspd }}</li>
+                <li>Crit Chance: {{ chosenChampion.crit }}</li>
+                <li>Range: {{ chosenChampion.range }}</li>
+              </ul>
+            </div>
+            <div class="skill-info">
+              <div class="skill-info-header">
+                <span class="skill-image">
+                  <img src="{{ chosenChampion.skillImage }}" />
+                </span>
+                <div class="skill-name">
+                  {{ chosenChampion.skillName }}
+                </div>
+              </div>
+              <div class="skill-description">
+                {{ chosenChampion.skillDesc }}
+              </div>
+              <div
+                class="skill-more-info"
+                *ngFor="let info of chosenChampion.skillInfo"
+              >
+                {{ info }}
+              </div>
+            </div>
           </div>
         </div>
       </div>

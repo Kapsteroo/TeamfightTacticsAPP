@@ -46,8 +46,8 @@ export class ChampionsComponent implements OnInit {
       });
     if (chosenChampion.class2 != null) {
       this.afs
-        .collection('traits')
-        .doc(chosenChampion.trait)
+        .collection('classes')
+        .doc(chosenChampion.class2)
         .valueChanges()
         .subscribe((champClass2) => {
           this.champClass2 = champClass2 as Class;
