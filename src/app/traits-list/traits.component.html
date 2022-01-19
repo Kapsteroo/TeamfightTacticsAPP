@@ -11,6 +11,7 @@
       <table class="trait-table center">
         <thead>
           <tr>
+            <th></th>
             <th>Trait</th>
             <th>Bonus</th>
             <th>Bonus description</th>
@@ -19,6 +20,7 @@
         </thead>
         <tbody *ngFor="let trait of traits">
           <tr>
+            <td><img src="{{trait.traitImage}}"></td>
             <td>
               <b>{{ trait.name }}</b>
             </td>

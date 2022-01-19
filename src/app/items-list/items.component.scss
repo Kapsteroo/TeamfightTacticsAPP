@@ -1,78 +1,65 @@
 .items-container {
-    display: flex;
-    margin-top: 170px;
-    align-items: center;
-    height: 600px;
-    justify-content: space-between;
+  display: flex;
+  margin-top: 170px;
+  align-items: center;
+  height: 600px;
+  justify-content: space-between;
 }
 
 .select-item {
-    width: 60vh;
-    margin-left: 60px;
+  width: 60vh;
+  margin-left: 60px;
 }
 
 .baseItemSelector {
-    padding: 20px;
-    background-color: #fdad00;
-    color: #1b0d97;
-    display: block;
-    height: 19vh;
-    border-radius: 10px;
-    margin-bottom: 10px;
+  padding: 20px;
+  background-color: #fdad00;
+  color: #1b0d97;
+  display: block;
+  height: 19vh;
+  border-radius: 10px;
+  margin-bottom: 10px;
 }
 
-// .card {
-//     display:flex;
-//     flex-direction: column;
-//     align-items: center;
-//     transform: translate(0,50%);
-//     text-align: center;
-// }
-
-// .base-items-card{
-//     width: 250px;
-//     background:#fdad00;
-// }
-
 .combinedItemSelector {
-    padding: 20px;
-    background-color: #fdad00;
-    display: block;
-    height: 340px;
-    border-radius: 10px;
-    color: #1b0d97;
+  padding: 20px;
+  background-color: #fdad00;
+  display: block;
+  height: 340px;
+  border-radius: 10px;
+  color: #1b0d97;
 }
 
 .items-info-container {
-    text-align: center;
-    padding: 20px;
-    margin-right: 60px;
-    margin-left: 20px;
-    background-color: #fdad00;
-    width: 120vh;
-    display: block;
-    height: 555px;
-    border-radius: 10px;
-    color: #1b0d97;
-    line-height: 38px;
+  text-align: center;
+  padding: 20px;
+  margin-right: 60px;
+  margin-left: 20px;
+  background-color: #fdad00;
+  width: 120vh;
+  display: block;
+  height: 555px;
+  border-radius: 10px;
+  color: #1b0d97;
+  line-height: 38px;
 }
 
 .chosen-item-desc {
-    font-size: 28px;
+  font-size: 28px;
 }
 
 .chosen-item-header {
-    font-size: 36px;
+  font-size: 36px;
 }
 
 .chosen-item-content {
-    transform: translateY(20%);
+  transform: translateY(20%);
 }
 
 .item-image {
-    width:80px;
-    margin-left: 20px;
-    margin-right: 20px;
+  width: 80px;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 ul {
@@ -83,7 +70,12 @@ ul {
 }
 
 button {
-    height: 48px;
-    border: 0;
-    cursor: pointer;
+  height: 48px;
+  border: 0;
+  cursor: pointer;
+}
+
+img {
+  border-radius: 8px;
+  border-style: solid;
 }

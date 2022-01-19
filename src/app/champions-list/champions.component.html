@@ -7,9 +7,30 @@
     <title>Document</title>
   </head>
   <body>
-    <div class="container">
-      <div id="champSelector"><span>Champion select</span></div>
-      <div id="champInfo"><span>Champion Info</span></div>
+    <div class="main-container">
+      <div class="champ-container">
+        <div class="champ-card-header">SELECT CHAMPION</div>
+        <div class="top-distance">
+          <ul *ngFor="let champion of champions">
+            <button (click)="chooseChampion(champion)">
+              <img src="{{ champion.champImage }}" width="56" />
+            </button>
+          </ul>
+        </div>
+      </div>
+      <div class="champ-info-container">
+        <div class="champ-card-header">CHAMPION INFO</div>
+        <div *ngIf="chosenChampion != null">
+          <div class="champ-info-header top-distance">
+            <img src="{{ chosenChampion.champImage }}" width="100" />
+            <span class="champ-name">{{ chosenChampion.name }}</span>
+            <span class="trait-name"
+              ><img src="{{ trait.traitImage }}" />
+              {{ chosenChampion.trait }}
+            </span>
+          </div>
+        </div>
+      </div>
     </div>
   </body>
 </html>

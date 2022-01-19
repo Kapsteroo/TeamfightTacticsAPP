@@ -1,26 +1,76 @@
-.container {
-    display: flex;
-    background-color: brown;
-    margin-top: 200px;
-    align-items: center;
-    height: 600px;
-    justify-content: space-between;
+.main-container {
+  margin-top: 170px;
+  min-height: 700px;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 60px;
+  margin-right: 60px;
+  display: flex;
 }
 
-#champSelector {
-    padding: 20px;
-    margin-left: 30px;
-    background-color: cadetblue;
-    width: 350px;
-    display: block;
-    height: 555px;
+.champ-container {
+  background-color: #fdad00;
+  margin-right: 20px;
+  height: 75vh;
+  width: 25%;
+  border-radius: 10px;
 }
 
-#champInfo {
-    padding: 20px;
-    margin-right: 20px;
-    background-color: chartreuse;
-    width: 800px;
-    display: block;
-    height: 555px;
+.champ-info-container {
+  background-color: #fdad00;
+  height: 75vh;
+  border-radius: 10px;
+  width: 70%;
+}
+
+.champ-card-header {
+  padding: 10px;
+  text-align: left;
+  font-size: 36px;
+  font-weight: bolder;
+  color: #1b0d97;
+  height: 60px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  background-color: #c58700;
+  line-height: 38px;
+}
+.top-distance {
+  margin-top: 7px;
+}
+
+ul {
+  display: inline;
+  padding: 5px;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+button {
+  height: 48px;
+  border: 0;
+  cursor: pointer;
+}
+
+img {
+  border-radius: 8px;
+  border-style: solid;
+}
+
+.champ-info-header {
+  display: flex;
+  margin: 10px;
+}
+
+.champ-name {
+  font-size: 28px;
+  font-weight: bold;
+  padding: 20px;
+}
+
+.trait-name {
+  font-size: 28px;
+  padding: 20px;
+}
+.trait-name img {
+    transform: translateY(25%);
 }
