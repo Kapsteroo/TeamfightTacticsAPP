@@ -16,6 +16,7 @@ export interface Champion {
   skillDesc: string;
   skillInfo: Array<string>;
   trait: string;
+  trait2?: string;
   class: string;
   class2?: string;
 }

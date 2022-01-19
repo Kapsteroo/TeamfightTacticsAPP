@@ -14,6 +14,7 @@ export class ChampionsComponent implements OnInit {
   champions: Champion[];
   chosenChampion: Champion;
   trait: Trait;
+  trait2: Trait;
   champClass: Class;
   champClass2: Class;
 
@@ -37,6 +38,15 @@ export class ChampionsComponent implements OnInit {
       .subscribe((trait) => {
         this.trait = trait as Trait;
       });
+    if (chosenChampion.trait2 != null) {
+      this.afs
+        .collection('traits')
+        .doc(chosenChampion.trait2)
+        .valueChanges()
+        .subscribe((trait2) => {
+          this.trait2 = trait2 as Trait;
+        });
+    }
     this.afs
       .collection('classes')
       .doc(chosenChampion.class)

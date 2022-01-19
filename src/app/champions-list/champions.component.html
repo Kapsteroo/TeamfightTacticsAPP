@@ -28,6 +28,10 @@
               ><img src="{{ trait.traitImage }}" />
               {{ trait.name }}
             </span>
+            <span *ngIf="chosenChampion.trait2 != null" class="trait-name"
+              ><img src="{{ trait2.traitImage }}" />
+              {{ trait2.name }}
+            </span>
             <span class="trait-name"
               ><img src="{{ champClass.classImage }}" />
               {{ champClass.name }}
