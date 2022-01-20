@@ -7,7 +7,7 @@
     <title>builder</title>
   </head>
   <body>
-    <div class="main-container">
+    <div class="board-container">
       <div class="side-list">SYNERGY LIST</div>
       <div class="board">
         <div class="a"></div>
@@ -40,6 +40,11 @@
         <div class="z3"></div>
       </div>
       <div class="side-list">Save</div>
+    </div>
+    <div class="champ-chooser">
+      <ul *ngFor="let champion of champions">
+          <img src="{{ champion.champImage }}" width="56" />
+      </ul>
     </div>
   </body>
 </html>

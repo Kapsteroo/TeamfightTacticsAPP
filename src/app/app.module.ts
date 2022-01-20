@@ -40,6 +40,7 @@ import { PatchService } from './services/patch.service';
 import { AddPatchComponent } from './add-patch/add-patch.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { ClassesComponent } from './classes-list/classes.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { ClassesComponent } from './classes-list/classes.component';
     ClassesComponent,
   ],
   imports: [
+    DragDropModule,
     MatCardModule,
     MatInputModule,
     BrowserModule,
