@@ -1,3 +1,4 @@
+import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import { Component, OnInit } from '@angular/core';
 import { Champion } from '../models/champion';
 import { ChampionService } from '../services/champion.service';
@@ -16,5 +17,12 @@ export class TeamCompBuilderComponent implements OnInit {
     this.championService.getChampions().subscribe((champions) => {
       this.champions = champions;
     });
+  }
+
+  drop(event: CdkDragDrop<Champion[]>) {
+
+    console.log("previousIndex = ", event.previousIndex);
+
+    console.log('currentIndex = ', event.currentIndex);
   }
 }
