@@ -41,6 +41,8 @@ import { AddPatchComponent } from './add-patch/add-patch.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { ClassesComponent } from './classes-list/classes.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { SquareComponent } from './square/square.component';
+import { BoardComponent } from './board/board.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +54,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     AddPatchComponent,
     NavBarComponent,
     ClassesComponent,
+    SquareComponent,
+    BoardComponent,
   ],
   imports: [
     DragDropModule,

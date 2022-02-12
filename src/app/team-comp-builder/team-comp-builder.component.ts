@@ -1,7 +1,11 @@
-import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import { Component, OnInit } from '@angular/core';
 import { Champion } from '../models/champion';
 import { ChampionService } from '../services/champion.service';
+import {
+  CdkDragDrop,
+  moveItemInArray,
+  transferArrayItem,
+} from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-team-comp-builder',
@@ -19,10 +23,4 @@ export class TeamCompBuilderComponent implements OnInit {
     });
   }
 
-  drop(event: CdkDragDrop<Champion[]>) {
-
-    console.log("previousIndex = ", event.previousIndex);
-
-    console.log('currentIndex = ', event.currentIndex);
-  }
 }

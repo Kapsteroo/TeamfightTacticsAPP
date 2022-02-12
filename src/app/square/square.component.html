@@ -1,0 +1,6 @@
+<button
+  (click)="clearSquare()"
+  cdkDropList
+  [cdkDropListData]="champions"
+  (cdkDropListDropped)="drop($event)"
+><img [src]="image" width="84px" position="center"></button>
