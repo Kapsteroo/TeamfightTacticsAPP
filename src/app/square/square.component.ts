@@ -1,5 +1,5 @@
 import { CdkDragDrop, copyArrayItem } from '@angular/cdk/drag-drop';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Champion } from '../models/champion';
 
 @Component({
@@ -10,6 +10,11 @@ import { Champion } from '../models/champion';
 export class SquareComponent implements OnInit {
   champions: Champion[] = [];
   image: string;
+
+  champToEmit: Champion;
+
+  @Output()
+  eventChamp = new EventEmitter<Champion>();
 
   constructor() {}
 
@@ -24,24 +29,20 @@ export class SquareComponent implements OnInit {
         event.currentIndex
       );
       this.image = this.champions[0].champImage;
-    } else {
-      this.clearArray();
-      copyArrayItem(
-        event.previousContainer.data,
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex
-      );
-    }
-    console.log(event);
+      this.champToEmit = this.champions[0];
+      this.emitChampion(this.champToEmit);
+      // console.log(this.champToEmit)
+    } else this.clearSquare();
+    // console.log(event);
   }
 
-  clearArray() {
-    this.champions = [];
-  }
+  emitChampion(champ: Champion) {
+    this.eventChamp.emit(champ);
+  };
 
   clearSquare() {
     this.champions = [];
     this.image = '';
   }
+
 }

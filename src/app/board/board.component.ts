@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Champion } from '../models/champion';
 
 @Component({
   selector: 'app-board',
@@ -12,4 +13,7 @@ export class BoardComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  selected(champ: Champion): void{
+    console.log(champ);
+  }
 }
