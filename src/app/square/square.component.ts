@@ -13,8 +13,8 @@ export class SquareComponent implements OnInit {
 
   champToEmit: Champion;
 
-  @Output()
-  eventChamp = new EventEmitter<Champion>();
+  @Output() eventAddChamp = new EventEmitter<Champion>();
+  @Output() eventRemoveChamp = new EventEmitter<Champion>();
 
   constructor() {}
 
@@ -31,18 +31,16 @@ export class SquareComponent implements OnInit {
       this.image = this.champions[0].champImage;
       this.champToEmit = this.champions[0];
       this.emitChampion(this.champToEmit);
-      // console.log(this.champToEmit)
-    } else this.clearSquare();
-    // console.log(event);
+    }
   }
 
   emitChampion(champ: Champion) {
-    this.eventChamp.emit(champ);
-  };
+    this.eventAddChamp.emit(champ);
+  }
 
   clearSquare() {
+    this.eventRemoveChamp.emit(this.champions[0]);
     this.champions = [];
     this.image = '';
   }
-
 }
