@@ -44,6 +44,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { SquareComponent } from './square/square.component';
 import { BoardComponent } from './board/board.component';
 import { SaveTeamComponent } from './save-team/save-team.component';
+import { SynergyListComponent } from './synergy-list/synergy-list.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { SaveTeamComponent } from './save-team/save-team.component';
     SquareComponent,
     BoardComponent,
     SaveTeamComponent,
+    SynergyListComponent,
   ],
   imports: [
     DragDropModule,

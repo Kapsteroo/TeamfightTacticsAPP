@@ -1,30 +1,38 @@
-<div class="board">
-  <app-square class="a" (eventAddChamp)="addToTeam($event)" (eventRemoveChamp)="removeFromTeam($event)"></app-square>
-  <app-square class="b" (eventAddChamp)="addToTeam($event)" (eventRemoveChamp)="removeFromTeam($event)"></app-square>
-  <app-square class="c" (eventAddChamp)="addToTeam($event)" (eventRemoveChamp)="removeFromTeam($event)"></app-square>
-  <app-square class="d" (eventAddChamp)="addToTeam($event)" (eventRemoveChamp)="removeFromTeam($event)"></app-square>
-  <app-square class="e" (eventAddChamp)="addToTeam($event)" (eventRemoveChamp)="removeFromTeam($event)"></app-square>
-  <app-square class="f" (eventAddChamp)="addToTeam($event)" (eventRemoveChamp)="removeFromTeam($event)"></app-square>
-  <app-square class="g" (eventAddChamp)="addToTeam($event)" (eventRemoveChamp)="removeFromTeam($event)"></app-square>
-  <app-square class="h" (eventAddChamp)="addToTeam($event)" (eventRemoveChamp)="removeFromTeam($event)"></app-square>
-  <app-square class="i" (eventAddChamp)="addToTeam($event)" (eventRemoveChamp)="removeFromTeam($event)"></app-square>
-  <app-square class="j" (eventAddChamp)="addToTeam($event)" (eventRemoveChamp)="removeFromTeam($event)"></app-square>
-  <app-square class="k" (eventAddChamp)="addToTeam($event)" (eventRemoveChamp)="removeFromTeam($event)"></app-square>
-  <app-square class="l" (eventAddChamp)="addToTeam($event)" (eventRemoveChamp)="removeFromTeam($event)"></app-square>
-  <app-square class="m" (eventAddChamp)="addToTeam($event)" (eventRemoveChamp)="removeFromTeam($event)"></app-square>
-  <app-square class="n" (eventAddChamp)="addToTeam($event)" (eventRemoveChamp)="removeFromTeam($event)"></app-square>
-  <app-square class="o" (eventAddChamp)="addToTeam($event)" (eventRemoveChamp)="removeFromTeam($event)"></app-square>
-  <app-square class="p" (eventAddChamp)="addToTeam($event)" (eventRemoveChamp)="removeFromTeam($event)"></app-square>
-  <app-square class="q" (eventAddChamp)="addToTeam($event)" (eventRemoveChamp)="removeFromTeam($event)"></app-square>
-  <app-square class="r" (eventAddChamp)="addToTeam($event)" (eventRemoveChamp)="removeFromTeam($event)"></app-square>
-  <app-square class="s" (eventAddChamp)="addToTeam($event)" (eventRemoveChamp)="removeFromTeam($event)"></app-square>
-  <app-square class="t" (eventAddChamp)="addToTeam($event)" (eventRemoveChamp)="removeFromTeam($event)"></app-square>
-  <app-square class="u" (eventAddChamp)="addToTeam($event)" (eventRemoveChamp)="removeFromTeam($event)"></app-square>
-  <app-square class="w" (eventAddChamp)="addToTeam($event)" (eventRemoveChamp)="removeFromTeam($event)"></app-square>
-  <app-square class="x" (eventAddChamp)="addToTeam($event)" (eventRemoveChamp)="removeFromTeam($event)"></app-square>
-  <app-square class="y" (eventAddChamp)="addToTeam($event)" (eventRemoveChamp)="removeFromTeam($event)"></app-square>
-  <app-square class="z" (eventAddChamp)="addToTeam($event)" (eventRemoveChamp)="removeFromTeam($event)"></app-square>
-  <app-square class="z1" (eventAddChamp)="addToTeam($event)" (eventRemoveChamp)="removeFromTeam($event)"></app-square>
-  <app-square class="z2" (eventAddChamp)="addToTeam($event)" (eventRemoveChamp)="removeFromTeam($event)"></app-square>
-  <app-square class="z3" (eventAddChamp)="addToTeam($event)" (eventRemoveChamp)="removeFromTeam($event)"></app-square>
+<div class="board-container">
+  <div class="side-list">
+    <app-synergy-list></app-synergy-list>
+  </div>
+  <div class="board">
+    <app-square class="a" (eventAddChamp)="addToTeam($event)" (eventRemoveChamp)="removeFromTeam($event)"></app-square>
+    <app-square class="b" (eventAddChamp)="addToTeam($event)" (eventRemoveChamp)="removeFromTeam($event)"></app-square>
+    <app-square class="c" (eventAddChamp)="addToTeam($event)" (eventRemoveChamp)="removeFromTeam($event)"></app-square>
+    <app-square class="d" (eventAddChamp)="addToTeam($event)" (eventRemoveChamp)="removeFromTeam($event)"></app-square>
+    <app-square class="e" (eventAddChamp)="addToTeam($event)" (eventRemoveChamp)="removeFromTeam($event)"></app-square>
+    <app-square class="f" (eventAddChamp)="addToTeam($event)" (eventRemoveChamp)="removeFromTeam($event)"></app-square>
+    <app-square class="g" (eventAddChamp)="addToTeam($event)" (eventRemoveChamp)="removeFromTeam($event)"></app-square>
+    <app-square class="h" (eventAddChamp)="addToTeam($event)" (eventRemoveChamp)="removeFromTeam($event)"></app-square>
+    <app-square class="i" (eventAddChamp)="addToTeam($event)" (eventRemoveChamp)="removeFromTeam($event)"></app-square>
+    <app-square class="j" (eventAddChamp)="addToTeam($event)" (eventRemoveChamp)="removeFromTeam($event)"></app-square>
+    <app-square class="k" (eventAddChamp)="addToTeam($event)" (eventRemoveChamp)="removeFromTeam($event)"></app-square>
+    <app-square class="l" (eventAddChamp)="addToTeam($event)" (eventRemoveChamp)="removeFromTeam($event)"></app-square>
+    <app-square class="m" (eventAddChamp)="addToTeam($event)" (eventRemoveChamp)="removeFromTeam($event)"></app-square>
+    <app-square class="n" (eventAddChamp)="addToTeam($event)" (eventRemoveChamp)="removeFromTeam($event)"></app-square>
+    <app-square class="o" (eventAddChamp)="addToTeam($event)" (eventRemoveChamp)="removeFromTeam($event)"></app-square>
+    <app-square class="p" (eventAddChamp)="addToTeam($event)" (eventRemoveChamp)="removeFromTeam($event)"></app-square>
+    <app-square class="q" (eventAddChamp)="addToTeam($event)" (eventRemoveChamp)="removeFromTeam($event)"></app-square>
+    <app-square class="r" (eventAddChamp)="addToTeam($event)" (eventRemoveChamp)="removeFromTeam($event)"></app-square>
+    <app-square class="s" (eventAddChamp)="addToTeam($event)" (eventRemoveChamp)="removeFromTeam($event)"></app-square>
+    <app-square class="t" (eventAddChamp)="addToTeam($event)" (eventRemoveChamp)="removeFromTeam($event)"></app-square>
+    <app-square class="u" (eventAddChamp)="addToTeam($event)" (eventRemoveChamp)="removeFromTeam($event)"></app-square>
+    <app-square class="w" (eventAddChamp)="addToTeam($event)" (eventRemoveChamp)="removeFromTeam($event)"></app-square>
+    <app-square class="x" (eventAddChamp)="addToTeam($event)" (eventRemoveChamp)="removeFromTeam($event)"></app-square>
+    <app-square class="y" (eventAddChamp)="addToTeam($event)" (eventRemoveChamp)="removeFromTeam($event)"></app-square>
+    <app-square class="z" (eventAddChamp)="addToTeam($event)" (eventRemoveChamp)="removeFromTeam($event)"></app-square>
+    <app-square class="z1" (eventAddChamp)="addToTeam($event)" (eventRemoveChamp)="removeFromTeam($event)"></app-square>
+    <app-square class="z2" (eventAddChamp)="addToTeam($event)" (eventRemoveChamp)="removeFromTeam($event)"></app-square>
+    <app-square class="z3" (eventAddChamp)="addToTeam($event)" (eventRemoveChamp)="removeFromTeam($event)"></app-square>
+  </div>
+  <div class ="side-list">
+    <app-save-team></app-save-team>
+  </div>
 </div>

@@ -9,10 +9,10 @@
   <body>
     <div class="drag-drop-container" cdkDropListGroup>
       <div class="board-container">
-        <div class="side-list">SYNERGY LIST</div>
+        <!-- <div class="side-list">SYNERGY LIST</div> -->
         <app-board 
         > </app-board>
-        <app-save-team></app-save-team>
+        <!-- <app-save-team></app-save-team> -->
       </div>
       <div class="champ-chooser" cdkDropList [cdkDropListData]="champions">
         <div class="champ-list" *ngFor="let champion of champions" cdkDrag>
