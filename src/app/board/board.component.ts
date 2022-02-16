@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Champion } from '../models/champion';
 
 @Component({
@@ -9,7 +10,7 @@ import { Champion } from '../models/champion';
 export class BoardComponent implements OnInit {
   team: Champion[] = [];
 
-  constructor() {}
+  constructor(afs: AngularFirestore) {}
 
   ngOnInit(): void {}
 
@@ -20,7 +21,11 @@ export class BoardComponent implements OnInit {
 
   removeFromTeam(champ: Champion): void {
     const champIndex = this.team.findIndex((c) => c !== champ);
-    this.team.splice(champIndex, 1)
+    this.team.splice(champIndex, 1);
     console.log(this.team);
+  }
+
+  saveToFavorites() {
+    
   }
 }

@@ -4,7 +4,6 @@ import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
-
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
@@ -43,7 +42,6 @@ import { ClassesComponent } from './classes-list/classes.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { SquareComponent } from './square/square.component';
 import { BoardComponent } from './board/board.component';
-import { SaveTeamComponent } from './save-team/save-team.component';
 import { SynergyListComponent } from './synergy-list/synergy-list.component';
 
 @NgModule({
@@ -58,7 +56,6 @@ import { SynergyListComponent } from './synergy-list/synergy-list.component';
     ClassesComponent,
     SquareComponent,
     BoardComponent,
-    SaveTeamComponent,
     SynergyListComponent,
   ],
   imports: [
