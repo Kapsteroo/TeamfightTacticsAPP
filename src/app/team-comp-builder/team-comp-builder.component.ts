@@ -1,11 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Champion } from '../models/champion';
 import { ChampionService } from '../services/champion.service';
-import {
-  CdkDragDrop,
-  moveItemInArray,
-  transferArrayItem,
-} from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-team-comp-builder',

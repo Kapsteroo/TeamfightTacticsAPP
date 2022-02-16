@@ -12,7 +12,7 @@
         <div class="side-list">SYNERGY LIST</div>
         <app-board 
         > </app-board>
-        <div class="side-list">Save</div>
+        <app-save-team></app-save-team>
       </div>
       <div class="champ-chooser" cdkDropList [cdkDropListData]="champions">
         <div class="champ-list" *ngFor="let champion of champions" cdkDrag>

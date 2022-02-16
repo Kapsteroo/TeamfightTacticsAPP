@@ -43,6 +43,7 @@ import { ClassesComponent } from './classes-list/classes.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { SquareComponent } from './square/square.component';
 import { BoardComponent } from './board/board.component';
+import { SaveTeamComponent } from './save-team/save-team.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { BoardComponent } from './board/board.component';
     ClassesComponent,
     SquareComponent,
     BoardComponent,
+    SaveTeamComponent,
   ],
   imports: [
     DragDropModule,

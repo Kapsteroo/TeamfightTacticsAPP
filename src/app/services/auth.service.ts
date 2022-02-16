@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 
 import {AngularFireAuth} from '@angular/fire/compat/auth';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 import {Router} from '@angular/router';
 
 @Injectable({
@@ -9,7 +10,7 @@ import {Router} from '@angular/router';
 export class AuthService {
   userLoggedIn: boolean; // other components can check on this variable for the login status of the user
 
-  constructor(private router: Router, private afAuth: AngularFireAuth) {
+  constructor(private router: Router, private afAuth: AngularFireAuth, private afs:AngularFirestore) {
     this.userLoggedIn = false;
 
     this.afAuth.onAuthStateChanged((user) => {
@@ -45,6 +46,8 @@ export class AuthService {
         let user1 = result.user;
         if (user1)
           user1.sendEmailVerification(); // immediately send the user a verification email
+        this.afs.collection('favorites').doc(result.user?.uid).set({
+        })
       })
       .catch((error) => {
         console.log('Auth Service: signup error', error);
