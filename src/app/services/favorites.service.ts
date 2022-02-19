@@ -15,7 +15,20 @@ export class FavoritesService {
   teams: Observable<FavTeam[]>;
   userID: string;
 
-  constructor(public afs: AngularFirestore) {}
+  constructor(public afs: AngularFirestore) {
+    // this.teams = this.favoritesCollection
+    //   .doc(uid)
+    //   .collection('teams')
+    //   .snapshotChanges()
+    //   .pipe(
+    //     map((changes) => {
+    //       return changes.map((a) => {
+    //         const data = a.payload.doc.data() as FavTeam;
+    //         return data;
+    //       });
+    //     })
+    //   );
+  }
 
   getFavTeams() {
     return this.teams;
@@ -26,14 +39,18 @@ export class FavoritesService {
       .collection('favorites')
       .doc(uid)
       .collection('teams');
-    this.teams = this.favoritesCollection.snapshotChanges().pipe(
-      map((changes) => {
-        return changes.map((a) => {
-          const data = a.payload.doc.data() as FavTeam;
-          return data;
-        });
-      })
-    );
+    this.teams = this.favoritesCollection
+      .doc(uid)
+      .collection('teams')
+      .snapshotChanges()
+      .pipe(
+        map((changes) => {
+          return changes.map((a) => {
+            const data = a.payload.doc.data() as FavTeam;
+            return data;
+          });
+        })
+      );
   }
 
   addFavTeam(team: FavTeam) {
