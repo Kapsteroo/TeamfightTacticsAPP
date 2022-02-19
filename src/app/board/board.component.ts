@@ -28,21 +28,14 @@ export class BoardComponent implements OnInit {
 
   addToTeam(champ: Champion): void {
     this.team.push(champ);
-    this.teamMembersNames.push(champ.name);
     console.log(this.team);
-    console.log(this.teamMembersNames);
     console.log(this.authService.getUserID());
   }
 
   removeFromTeam(champ: Champion): void {
     const champIndex = this.team.findIndex((c) => c !== champ);
     this.team.splice(champIndex, 1);
-
-    const champIndex2 = this.teamMembersNames.findIndex((d) => d != champ.name);
-    this.teamMembersNames.splice(champIndex2, 1);
-
     console.log(this.team);
-    console.log(this.teamMembersNames);
   }
 
   saveToFavorites() {

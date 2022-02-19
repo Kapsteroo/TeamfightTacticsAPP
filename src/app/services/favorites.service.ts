@@ -6,7 +6,6 @@ import {
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { FavTeam } from '../models/favTeam';
-import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +15,7 @@ export class FavoritesService {
   teams: Observable<FavTeam[]>;
   userID: string;
 
-  constructor(public afs: AngularFirestore, public authService: AuthService) {}
+  constructor(public afs: AngularFirestore) {}
 
   getFavTeams() {
     return this.teams;
