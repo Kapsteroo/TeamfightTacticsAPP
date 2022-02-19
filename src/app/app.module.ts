@@ -43,6 +43,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { SquareComponent } from './square/square.component';
 import { BoardComponent } from './board/board.component';
 import { SynergyListComponent } from './synergy-list/synergy-list.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { PopUpComponent } from './pop-up/pop-up.component';
 
 @NgModule({
   declarations: [
@@ -57,8 +59,10 @@ import { SynergyListComponent } from './synergy-list/synergy-list.component';
     SquareComponent,
     BoardComponent,
     SynergyListComponent,
+    PopUpComponent,
   ],
   imports: [
+    MatDialogModule,
     DragDropModule,
     MatCardModule,
     MatInputModule,

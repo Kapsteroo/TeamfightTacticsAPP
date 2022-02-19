@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { MatDialog } from '@angular/material/dialog';
 import { Champion } from '../models/champion';
 import { FavTeam } from '../models/favTeam';
+import { PopUpComponent } from '../pop-up/pop-up.component';
 import { AuthService } from '../services/auth.service';
 import { FavoritesService } from '../services/favorites.service';
 
@@ -20,6 +20,7 @@ export class BoardComponent implements OnInit {
   };
 
   constructor(
+    private dialogRef: MatDialog,
     private authService: AuthService,
     private favService: FavoritesService
   ) {}
@@ -44,5 +45,6 @@ export class BoardComponent implements OnInit {
     }
     this.favService.setCollection(this.authService.getUserID());
     this.favService.addFavTeam(this.teamToSave);
+    this.dialogRef.open(PopUpComponent);
   }
 }
