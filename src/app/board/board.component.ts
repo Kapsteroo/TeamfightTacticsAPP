@@ -6,6 +6,7 @@ import { FavTeam } from '../models/favTeam';
 import { PopUpComponent } from '../pop-up/pop-up.component';
 import { AuthService } from '../services/auth.service';
 import { FavoritesService } from '../services/favorites.service';
+import { SynergyListComponent } from '../synergy-list/synergy-list.component';
 
 @Component({
   selector: 'app-board',
@@ -14,13 +15,13 @@ import { FavoritesService } from '../services/favorites.service';
 })
 export class BoardComponent implements OnInit {
   team: Champion[] = [];
-  teamMembersNames: string[] = [];
   userID: string | undefined;
   teamToSave: FavTeam = {
     team: [],
   };
 
   constructor(
+    // private synergyList: SynergyListComponent,
     private dialogRef: MatDialog,
     private authService: AuthService,
     private favService: FavoritesService,
@@ -30,9 +31,10 @@ export class BoardComponent implements OnInit {
   ngOnInit(): void {}
 
   addToTeam(champ: Champion): void {
-    this.team.push(champ);
-    console.log(this.team);
-    console.log(this.authService.getUserID());
+    this.team = [... this.team, champ]
+    // console.log(this.team);
+    // console.log(this.authService.getUserID());
+    // this.synergyList.count();
   }
 
   removeFromTeam(champ: Champion): void {

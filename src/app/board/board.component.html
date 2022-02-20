@@ -1,6 +1,6 @@
 <div class="board-container">
   <aside class="side-list">
-    <app-synergy-list></app-synergy-list>
+    <app-synergy-list [team]="team"></app-synergy-list>
   </aside>
   <div class="board">
     <app-square
@@ -150,12 +150,12 @@
       (click)="saveToFavorites()"
       *ngIf="afAuth.user | async"
     >
-      Save team <br>
+      Save team <br />
       to favorites
     </button>
-    <a class="hero-btn center-el" *ngIf="!(afAuth.user | async)" href="/home"
-      >Sign up or log in <br />
-      to save team</a
-    >
+    <a class="hero-btn center-el" *ngIf="!(afAuth.user | async)" href="/home">
+      Sign up or log in <br />
+      to save team
+    </a>
   </aside>
 </div>
