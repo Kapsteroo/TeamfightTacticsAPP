@@ -145,6 +145,17 @@
     ></app-square>
   </div>
   <aside class="side-list">
-    <button class="hero-btn save-btn" (click)="saveToFavorites()">Save Team</button>
+    <button
+      class="hero-btn save-btn"
+      (click)="saveToFavorites()"
+      *ngIf="afAuth.user | async"
+    >
+      Save team <br>
+      to favorites
+    </button>
+    <a class="hero-btn center-el" *ngIf="!(afAuth.user | async)" href="/home"
+      >Sign up or log in <br />
+      to save team</a
+    >
   </aside>
 </div>
