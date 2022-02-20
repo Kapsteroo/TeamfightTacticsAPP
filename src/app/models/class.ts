@@ -3,4 +3,5 @@ export interface Class {
   bonus: string | undefined;
   bonusDesc: Array<String>;
   classImage: string | undefined;
+  levels: Array<number>;
 }
