@@ -1,7 +1,7 @@
 export interface Class {
-  name: string | undefined;
+  name: string;
   bonus: string | undefined;
   bonusDesc: Array<String>;
-  classImage: string | undefined;
+  classImage: string;
   levels: Array<number>;
 }

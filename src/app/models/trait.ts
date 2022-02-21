@@ -1,5 +1,5 @@
 export interface Trait {
-  name: string | undefined;
+  name: string;
   bonus: string | undefined;
   bonusDesc: Array<String>;
   traitImage: string;
