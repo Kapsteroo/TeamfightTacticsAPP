@@ -49,7 +49,6 @@ export class BoardComponent implements OnInit {
       this.teamToSave.team = this.team;
     }
     if (this.team.length > 0) {
-      this.favService.setCollection(this.authService.getUserID());
       this.favService.addFavTeam(this.teamToSave);
       this.dialogRef.open(PopUpComponent);
     }

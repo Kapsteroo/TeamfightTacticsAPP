@@ -6,6 +6,7 @@ import {
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { FavTeam } from '../models/favTeam';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root',
@@ -13,9 +14,8 @@ import { FavTeam } from '../models/favTeam';
 export class FavoritesService {
   favoritesCollection: AngularFirestoreCollection<FavTeam>;
   teams: Observable<FavTeam[]>;
-  userID: string;
 
-  constructor(public afs: AngularFirestore) {
+  constructor(public afs: AngularFirestore, private authService: AuthService) {
     // this.teams = this.favoritesCollection
     //   .doc(uid)
     //   .collection('teams')
@@ -31,29 +31,28 @@ export class FavoritesService {
   }
 
   getFavTeams() {
+    this.setCollection();
     return this.teams;
   }
 
-  setCollection(uid?: string) {
+  setCollection() {
+    var uid = this.authService.getUserID();
     this.favoritesCollection = this.afs
       .collection('favorites')
       .doc(uid)
       .collection('teams');
-    this.teams = this.favoritesCollection
-      .doc(uid)
-      .collection('teams')
-      .snapshotChanges()
-      .pipe(
-        map((changes) => {
-          return changes.map((a) => {
-            const data = a.payload.doc.data() as FavTeam;
-            return data;
-          });
-        })
-      );
+    this.teams = this.favoritesCollection.snapshotChanges().pipe(
+      map((changes) => {
+        return changes.map((a) => {
+          const data = a.payload.doc.data() as FavTeam;
+          return data;
+        });
+      })
+    );
   }
 
   addFavTeam(team: FavTeam) {
+    this.setCollection();
     this.favoritesCollection.add(team);
   }
 }
