@@ -1,7 +1,9 @@
 <h1>SYNERGIES</h1>
-<div class="synergy-container"*ngFor="let synergies of finalMap | keyvalue">
-  <div class="synergy" *ngIf="synergies.value.counter > 0">
-    <img src="{{ synergies.value.image }}" />
+<div class="synergy-container">
+  <div *ngFor="let synergies of finalMap | keyvalue">
+    <div class="synergy" *ngIf="synergies.value.counter > 0">
+      <img src="{{ synergies.value.image }}" />
       {{ synergies.key }} --> {{ synergies.value.counter }}
+    </div>
   </div>
 </div>

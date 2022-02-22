@@ -3,6 +3,8 @@
 }
 .synergy-container {
     display: flex;
+    flex-direction: column;
+    position: absolute;
 }
 
 .synergy {
