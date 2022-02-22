@@ -10,6 +10,7 @@ import { ClassService } from '../services/class.service';
 import { TraitService } from '../services/trait.service';
 import { Class } from '../models/class';
 import { Trait } from '../models/trait';
+import { Synergy } from '../models/synergy';
 
 @Component({
   selector: 'app-synergy-list',
@@ -49,7 +50,7 @@ export class SynergyListComponent implements OnInit, OnChanges {
   ];
   classesAndTraitsData: Map<string, string> = new Map();
   classesAndTraitCounter: Map<string, number> = new Map();
-  finalMap: Map<Array<string>, number> = new Map();
+  finalMap: Map<string, Synergy> = new Map();
   classes: Class[];
   traits: Trait[];
 
@@ -70,21 +71,28 @@ export class SynergyListComponent implements OnInit, OnChanges {
 
     if (changes.team) {
       this.classesAndTraitsData.forEach(
-        (classImage: string, className: string) => {
+        (classOrTraitImage: string, classOrTraitName: string) => {
           var counter = 0;
-          var array = [classImage, className];
+          var synergy = {
+            image: '',
+            counter: 0,
+          };
           for (let i = 0; i < changes.team.currentValue.length; i++) {
             if (
-              className === changes.team.currentValue[i].class ||
-              className === changes.team.currentValue[i].class2 ||
-              className === changes.team.currentValue[i].trait ||
-              className === changes.team.currentValue[i].trait2
+              classOrTraitName === changes.team.currentValue[i].class ||
+              classOrTraitName === changes.team.currentValue[i].class2 ||
+              classOrTraitName === changes.team.currentValue[i].trait ||
+              classOrTraitName === changes.team.currentValue[i].trait2
             ) {
               counter++;
             }
+            synergy = {
+              image: classOrTraitImage,
+              counter: counter,
+            };
           }
-          this.classesAndTraitCounter.set(className, counter);
-          this.finalMap.set(array, counter);
+          this.classesAndTraitCounter.set(classOrTraitName, counter);
+          this.finalMap.set(classOrTraitName, synergy);
         }
       );
       console.log(this.finalMap);

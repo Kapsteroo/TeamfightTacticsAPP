@@ -31,15 +31,17 @@ export class BoardComponent implements OnInit {
   ngOnInit(): void {}
 
   addToTeam(champ: Champion): void {
-    this.team = [... this.team, champ]
+    this.team = [...this.team, champ];
     // console.log(this.team);
     // console.log(this.authService.getUserID());
     // this.synergyList.count();
   }
 
   removeFromTeam(champ: Champion): void {
-    const champIndex = this.team.findIndex((c) => c !== champ);
+    const champIndex = this.team.findIndex((c) => c === champ);
+    // this.team.splice(champIndex, 1);
     this.team.splice(champIndex, 1);
+    this.team = [...this.team]
     console.log(this.team);
   }
 
@@ -47,7 +49,7 @@ export class BoardComponent implements OnInit {
     if (this.team) {
       this.teamToSave.team = this.team;
     }
-    if(this.team.length > 0){
+    if (this.team.length > 0) {
       this.favService.setCollection(this.authService.getUserID());
       this.favService.addFavTeam(this.teamToSave);
       this.dialogRef.open(PopUpComponent);

@@ -1,3 +1,17 @@
 * {
     color: blueviolet;
 }
+.synergy-container {
+    display: flex;
+}
+
+.synergy {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    font-size: 16px;
+}
+
+img {
+    margin: 3px 7px 3px 7px;
+}

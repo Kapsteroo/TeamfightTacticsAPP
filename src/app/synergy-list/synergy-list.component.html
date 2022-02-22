@@ -1,5 +1,7 @@
-<p>synergy-list works!</p>
-<!-- <div *ngFor = let traitAndClass of TraitAndClassMap | keyvalue>
-
-</div> -->
-<button (click)="showArray()">show log</button>
+<h1>SYNERGIES</h1>
+<div class="synergy-container"*ngFor="let synergies of finalMap | keyvalue">
+  <div class="synergy" *ngIf="synergies.value.counter > 0">
+    <img src="{{ synergies.value.image }}" />
+      {{ synergies.key }} --> {{ synergies.value.counter }}
+  </div>
+</div>
