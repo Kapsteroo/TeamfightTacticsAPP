@@ -6,7 +6,6 @@ import { FavTeam } from '../models/favTeam';
 import { PopUpComponent } from '../pop-up/pop-up.component';
 import { AuthService } from '../services/auth.service';
 import { FavoritesService } from '../services/favorites.service';
-import { SynergyListComponent } from '../synergy-list/synergy-list.component';
 
 @Component({
   selector: 'app-board',
