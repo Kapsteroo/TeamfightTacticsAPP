@@ -1,4 +1,22 @@
 <p>favorites works!</p>
 <div class="margintop">
-  <button (click)="showTeams()">sfgdfasfsd</button>
+  <div class="teams-container">
+    <div class="team-card" *ngFor="let favTeam of favTeams">
+      <div class="team-card2"*ngFor="let team of favTeam | keyvalue; let i = index">
+        <div class="team-card-header">
+          <span class="header-text">Team:</span>
+          <button class="hero-btn" (click)="removeTeam(favTeam)">DELETE TEAM</button>
+        </div>
+        <div class="team-card-container">
+          <div class="champions" *ngFor="let champion of team.value">
+            <img src="{{ champion.champImage }}" width="60px" /> <br>
+            {{champion.name}}
+          </div>
+          <!-- <div class="to-right-side">
+            
+          </div> -->
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

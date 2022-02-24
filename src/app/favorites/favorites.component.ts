@@ -18,10 +18,13 @@ export class FavoritesComponent implements OnInit {
     this.favService.getFavTeams().subscribe((favTeams) => {
       this.favTeams = favTeams;
     });
-    console.log(this.favTeams);
   }
 
   showTeams() {
     console.log(this.favTeams);
+  }
+
+  removeTeam(team: FavTeam) {
+    console.log(team)
   }
 }

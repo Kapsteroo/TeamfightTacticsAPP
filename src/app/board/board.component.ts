@@ -14,7 +14,6 @@ import { FavoritesService } from '../services/favorites.service';
 })
 export class BoardComponent implements OnInit {
   team: Champion[] = [];
-  userID: string | undefined;
   teamToSave: FavTeam = {
     team: [],
   };
@@ -22,7 +21,6 @@ export class BoardComponent implements OnInit {
   constructor(
     // private synergyList: SynergyListComponent,
     private dialogRef: MatDialog,
-    private authService: AuthService,
     private favService: FavoritesService,
     public afAuth: AngularFireAuth
   ) {}
@@ -37,10 +35,12 @@ export class BoardComponent implements OnInit {
   }
 
   removeFromTeam(champ: Champion): void {
-    const champIndex = this.team.findIndex((c) => c === champ);
-    // this.team.splice(champIndex, 1);
-    this.team.splice(champIndex, 1);
-    this.team = [...this.team]
+    if (champ) {
+      const champIndex = this.team.findIndex((c) => c === champ);
+      // this.team.splice(champIndex, 1);
+      this.team.splice(champIndex, 1);
+      this.team = [...this.team];
+    }
     console.log(this.team);
   }
 
