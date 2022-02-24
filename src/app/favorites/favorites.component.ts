@@ -25,6 +25,7 @@ export class FavoritesComponent implements OnInit {
   }
 
   removeTeam(team: FavTeam) {
-    console.log(team)
+    console.log(team.id)
+    this.favService.removeFavTeam(team);
   }
 }

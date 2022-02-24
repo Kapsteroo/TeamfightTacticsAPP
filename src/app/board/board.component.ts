@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Champion } from '../models/champion';
 import { FavTeam } from '../models/favTeam';
@@ -15,6 +16,7 @@ import { FavoritesService } from '../services/favorites.service';
 export class BoardComponent implements OnInit {
   team: Champion[] = [];
   teamToSave: FavTeam = {
+    id: '',
     team: [],
   };
 

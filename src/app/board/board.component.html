@@ -145,14 +145,25 @@
     ></app-square>
   </div>
   <aside class="side-list">
-    <button
-      class="hero-btn save-btn"
-      (click)="saveToFavorites()"
-      *ngIf="afAuth.user | async"
-    >
-      Save team <br />
-      to favorites
-    </button>
+    <div class="submit-team main-card">
+      <form (ngSubmit)="saveToFavorites()">
+        <!-- <mat-form-field>
+          <input
+            placeholder="name your team"
+            matInput
+            class="submit-team-btn"
+            type="text"
+          />
+        </mat-form-field> -->
+        <button
+          type="submit"
+          class="hero-btn save-btn"
+          *ngIf="afAuth.user | async"
+        >
+          Save team
+        </button>
+      </form>
+    </div>
     <a class="hero-btn center-el" *ngIf="!(afAuth.user | async)" href="/home">
       Sign up or log in <br />
       to save team
