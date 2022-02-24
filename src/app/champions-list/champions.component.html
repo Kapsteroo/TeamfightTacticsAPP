@@ -8,8 +8,8 @@
   </head>
   <body>
     <div class="main-container">
-      <div class="champ-container">
-        <div class="champ-card-header">SELECT CHAMPION</div>
+      <div class="champ-container main-card">
+        <div class="champ-card-header main-card-header">SELECT CHAMPION</div>
         <div class="top-distance">
           <ul *ngFor="let champion of champions">
             <button (click)="chooseChampion(champion)">
@@ -18,9 +18,12 @@
           </ul>
         </div>
       </div>
-      <div class="champ-info-container">
-        <div class="champ-card-header">CHAMPION INFO</div>
-        <div *ngIf="chosenChampion != null">
+      <div
+        class="champ-info-container main-card"
+        *ngIf="chosenChampion != null"
+      >
+        <div class="champ-card-header main-card-header">CHAMPION INFO</div>
+        <div>
           <div class="champ-info-header top-distance">
             <img src="{{ chosenChampion.champImage }}" width="100" />
             <span class="champ-name">{{ chosenChampion.name }}</span>
@@ -78,6 +81,9 @@
             </div>
           </div>
         </div>
+      </div>
+      <div class="select-champ-info main-card" *ngIf="chosenChampion == null">
+        <div class="champ-card-header main-card-header">SELECT A CHAMPION</div>
       </div>
     </div>
   </body>

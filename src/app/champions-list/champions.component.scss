@@ -1,6 +1,5 @@
 .main-container {
   margin-top: 170px;
-  min-height: 700px;
   justify-content: space-between;
   align-items: center;
   margin-left: 60px;
@@ -8,12 +7,15 @@
   display: flex;
 }
 
-.champ-container {
-  background-color: #fdad00;
-  margin-right: 20px;
+.select-champ-info {
+  width: 70%;
   height: 75vh;
+  text-align: center;
+  align-items: center;
+}
+.champ-container {
+  margin-right: 20px;
   width: 29%;
-  border-radius: 10px;
 }
 
 .champ-info-container {
@@ -25,10 +27,9 @@
 
 .champ-card-header {
   padding: 10px;
-  text-align: left;
+  // text-align: left;
   font-size: 36px;
   font-weight: bolder;
-  color: #1b0d97;
   height: 60px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
