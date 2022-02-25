@@ -5,7 +5,6 @@ import { FavoritesComponent } from './favorites/favorites.component';
 import { ItemsComponent } from './items-list/items.component';
 import { PatchNotesComponent } from './patch-notes/patch-notes.component';
 import { TeamCompBuilderComponent } from './team-comp-builder/team-comp-builder.component';
-import { TeamCompsComponent } from './team-comps/team-comps.component';
 import { TraitsComponent } from './traits-list/traits.component';
 import { HomeComponent } from './home/home.component';
 import { LogInComponent } from './log-in/log-in.component';
@@ -19,7 +18,6 @@ const routes: Routes = [
   { path: 'log-in', component: LogInComponent },
   { path: 'sign-up', component: SignUpComponent },
   { path: 'patch-notes', component: PatchNotesComponent },
-  { path: 'team-comps', component: TeamCompsComponent },
   { path: 'favorites', component: FavoritesComponent, canActivate: [AuthGuard]},
   { path: 'team-comp-builder', component: TeamCompBuilderComponent },
   { path: 'champions-list', component: ChampionsComponent },
@@ -39,7 +37,6 @@ export const routingComponents = [
   LogInComponent,
   SignUpComponent,
   PatchNotesComponent,
-  TeamCompsComponent,
   FavoritesComponent,
   TeamCompBuilderComponent,
   ChampionsComponent,
