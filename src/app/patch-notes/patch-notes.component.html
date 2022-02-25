@@ -1,27 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
 
-<body> 
-  <app-add-patch></app-add-patch>
-<div class="patch-container">
-  <ul *ngFor="let patch of patches">
-    <mat-card class="card">
-      <mat-card-title>{{ patch.title }} </mat-card-title>
-      <mat-card-content>
-        <div *ngFor="let description of patch.description">
-          {{ description }}
-          <br/>
+  <body>
+    <app-add-patch></app-add-patch>
+    <div class="patch-container">
+      <ul *ngFor="let patch of patches">
+        <div class="main-card">
+          <div class="main-card-header header-text"
+            >{{ patch.title }}
+          </div>
+          <div class="main-card">
+            <div *ngFor="let description of patch.description">
+              {{ description }}
+              <br />
+            </div>
+          </div>
         </div>
-      </mat-card-content>
-    </mat-card>
-  </ul>
-</div>
-
-</body>
+      </ul>
+    </div>
+  </body>
 </html>
