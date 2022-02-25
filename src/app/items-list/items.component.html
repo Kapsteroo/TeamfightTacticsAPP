@@ -41,6 +41,7 @@
         </div>
       </div>
       <div class="items-info-container">
+        <div *ngIf="chosenItem == null" class="items-card-header main-card-header">SELECT ITEM</div>
         <div *ngIf="chosenItem != null">
           <div class="items-card-header main-card-header">
             {{ chosenItem.name }}
