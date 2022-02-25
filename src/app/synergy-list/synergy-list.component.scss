@@ -1,19 +1,38 @@
 * {
-    color: blueviolet;
+  color: #1b0d97;
 }
 .synergy-container {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
 }
 
 .synergy {
-    display: flex;
-    justify-content: left;
-    align-items: center;
-    font-size: 16px;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  font-size: 16px;
+  background-color: #fdad00;
+  width: 172px;
+  justify-content: space-between;
+  padding-right: 20px;
+  border-bottom: solid 2px;
 }
 
 img {
-    margin: 3px 7px 3px 7px;
+  margin: 3px 7px 3px 7px;
+  filter: invert(1);
+}
+
+.synergies-title {
+  border-bottom: solid 2px;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  font-size: 32px;
+  justify-items: center;
+  align-items: center;
+  padding: 7px 12px 7px 12px;
+  line-height: 40px;
+  background-color: #c58700;
+  font-weight: bold;
 }

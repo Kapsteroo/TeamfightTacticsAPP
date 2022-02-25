@@ -145,7 +145,7 @@
     ></app-square>
   </div>
   <aside class="side-list">
-    <div class="submit-team main-card">
+    <div *ngIf="(afAuth.user | async)" class="submit-team main-card">
       <form (ngSubmit)="saveToFavorites()">
         <!-- <mat-form-field>
           <input
@@ -164,9 +164,11 @@
         </button>
       </form>
     </div>
-    <a class="hero-btn center-el" *ngIf="!(afAuth.user | async)" href="/home">
-      Sign up or log in <br />
-      to save team
-    </a>
+    <div class="submit-team main-card">
+      <a class="hero-btn center-el" *ngIf="!(afAuth.user | async)" href="/home">
+        Sign up or log in <br />
+        to save team
+      </a>
+    </div>
   </aside>
 </div>
