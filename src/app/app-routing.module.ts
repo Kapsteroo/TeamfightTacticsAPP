@@ -18,7 +18,7 @@ const routes: Routes = [
   { path: 'log-in', component: LogInComponent },
   { path: 'sign-up', component: SignUpComponent },
   { path: 'patch-notes', component: PatchNotesComponent },
-  { path: 'favorites', component: FavoritesComponent, canActivate: [AuthGuard]},
+  { path: 'favorites', component: FavoritesComponent },
   { path: 'team-comp-builder', component: TeamCompBuilderComponent },
   { path: 'champions-list', component: ChampionsComponent },
   { path: 'items-list', component: ItemsComponent },

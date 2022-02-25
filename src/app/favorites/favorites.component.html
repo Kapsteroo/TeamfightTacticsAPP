@@ -1,16 +1,27 @@
-
 <div class="margintop">
+  <div class="center-item">
+    <div
+      class="hero-btn btn-hover center-el login-btn"
+      *ngIf="!(afAuth.user | async)"
+      href="/home"
+    >
+      Sign up or log in <br />
+      to save team
+    </div>
+  </div>
   <div class="teams-container">
     <div class="team-card" *ngFor="let favTeam of favTeams">
       <div class="team-card2">
         <div class="team-card-header">
-          <span class="header-text">Team ID: {{favTeam.id}}</span>
-          <button class="hero-btn" (click)="removeTeam(favTeam)">DELETE TEAM</button>
+          <span class="header-text">Team ID: {{ favTeam.id }}</span>
+          <button class="hero-btn" (click)="removeTeam(favTeam)">
+            DELETE TEAM
+          </button>
         </div>
         <div class="team-card-container">
-          <div class="champions" *ngFor="let team of favTeam.team ">
-            <img src="{{ team.champImage }}" width="60px" /> <br>
-            {{team.name}}
+          <div class="champions" *ngFor="let team of favTeam.team">
+            <img src="{{ team.champImage }}" width="60px" /> <br />
+            {{ team.name }}
           </div>
         </div>
       </div>

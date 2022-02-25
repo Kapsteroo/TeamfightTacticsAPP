@@ -3,6 +3,7 @@ import { FavTeam } from '../models/favTeam';
 import { AuthService } from '../services/auth.service';
 import { FavoritesService } from '../services/favorites.service';
 import { ChampionService } from '../services/champion.service';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 @Component({
   selector: 'app-favorites',
@@ -12,7 +13,10 @@ import { ChampionService } from '../services/champion.service';
 export class FavoritesComponent implements OnInit {
   favTeams: FavTeam[];
 
-  constructor(private favService: FavoritesService, private authService: AuthService) {}
+  constructor(
+    private favService: FavoritesService,
+    public afAuth: AngularFireAuth
+  ) {}
 
   ngOnInit(): void {
     this.favService.getFavTeams().subscribe((favTeams) => {
@@ -25,7 +29,7 @@ export class FavoritesComponent implements OnInit {
   }
 
   removeTeam(team: FavTeam) {
-    console.log(team.id)
+    console.log(team.id);
     this.favService.removeFavTeam(team);
   }
 }

@@ -10,7 +10,7 @@
 }
 
 .team-card {
-  color: #1b0d97;;
+  color: #1b0d97;
   margin: 10px;
   background-color: #fdad00;
   border-radius: 7px;
@@ -26,7 +26,7 @@
   align-items: center;
 }
 
-.header-text{
+.header-text {
   font-size: 26px;
   font-weight: bold;
   margin-left: 10px;
@@ -46,10 +46,27 @@
 img {
   box-sizing: border-box;
   border: solid 1px;
-  border-radius: 5px;;
+  border-radius: 5px;
   border-color: white;
 }
 
 .hero-btn:hover {
   background-color: red;
+}
+
+.btn-hover:hover {
+  background-color: #c58700;
+}
+
+.center-item {
+  text-align: center;
+}
+
+.login-btn{
+  margin-top: 200px;
+  width: 30vh;
+  min-height: 120px;
+  text-align: center;
+  font-size: 36px;
+  line-height: 46px;
 }
