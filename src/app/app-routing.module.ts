@@ -9,7 +9,7 @@ import { TraitsComponent } from './traits-list/traits.component';
 import { HomeComponent } from './home/home.component';
 import { LogInComponent } from './log-in/log-in.component';
 import { AuthGuard } from './services/auth.guard';
-import {SignUpComponent} from "./sign-up/sign-up.component";
+import { SignUpComponent } from './sign-up/sign-up.component';
 import { ClassesComponent } from './classes-list/classes.component';
 
 const routes: Routes = [
@@ -18,7 +18,11 @@ const routes: Routes = [
   { path: 'log-in', component: LogInComponent },
   { path: 'sign-up', component: SignUpComponent },
   { path: 'patch-notes', component: PatchNotesComponent },
-  { path: 'favorites', component: FavoritesComponent },
+  {
+    path: 'favorites',
+    component: FavoritesComponent,
+    canActivate: [AuthGuard],
+  },
   { path: 'team-comp-builder', component: TeamCompBuilderComponent },
   { path: 'champions-list', component: ChampionsComponent },
   { path: 'items-list', component: ItemsComponent },
@@ -29,9 +33,9 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
 export const routingComponents = [
   HomeComponent,
   LogInComponent,
@@ -42,5 +46,5 @@ export const routingComponents = [
   ChampionsComponent,
   TraitsComponent,
   ClassesComponent,
-  ItemsComponent
+  ItemsComponent,
 ];

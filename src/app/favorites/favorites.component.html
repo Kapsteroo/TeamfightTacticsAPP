@@ -1,16 +1,5 @@
 <div class="margintop">
-  <div class="center-item">
-    <div
-      class="hero-btn btn-hover center-el login-btn"
-      *ngIf="!(afAuth.user | async)"
-      href="/home"
-    >
-      Sign up or log in <br />
-      to save team
-    </div>
-  </div>
   <div class="teams-container">
-    <button (click)="showTeams()">sdfsdfds</button>
     <div class="team-card" *ngFor="let favTeam of favTeams">
       <div class="team-card2">
         <div class="team-card-header">

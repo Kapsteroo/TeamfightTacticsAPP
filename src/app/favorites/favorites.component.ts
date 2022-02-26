@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FavTeam } from '../models/favTeam';
-import { AuthService } from '../services/auth.service';
 import { FavoritesService } from '../services/favorites.service';
-import { ChampionService } from '../services/champion.service';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 @Component({
