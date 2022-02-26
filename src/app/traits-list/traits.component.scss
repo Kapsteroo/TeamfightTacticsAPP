@@ -37,3 +37,11 @@
 .bord-rad{
   border-radius: 10px;
 }
+
+.flex-table{
+  display: flex;
+  flex-flow: row wrap;
+}
+.units-row{
+  width: 150px;
+}

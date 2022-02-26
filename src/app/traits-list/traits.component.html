@@ -7,7 +7,7 @@
     <title>traits</title>
   </head>
   <body>
-    <div class="tables-container bord-rad">
+    <div class="tables-container">
       <table class="trait-table center">
         <thead>
           <tr>
@@ -15,12 +15,14 @@
             <th>Trait</th>
             <th>Bonus</th>
             <th>Bonus description</th>
-            <th>Units</th>
+            <th class="units-row">Units</th>
           </tr>
         </thead>
         <tbody *ngFor="let trait of traits">
           <tr>
-            <td><img src="{{trait.traitImage}}"></td>
+            <td>
+              <img src="{{ trait.traitImage }}" />
+            </td>
             <td>
               <b>{{ trait.name }}</b>
             </td>
@@ -35,7 +37,23 @@
                 </tr>
               </table>
             </td>
-            <td>champions</td>
+            <td>
+              <table class="flex-table">
+                <div *ngFor="let champion of champions">
+                  <div
+                    *ngIf="
+                      champion.trait == trait.name ||
+                      champion.trait2 == trait.name
+                    "
+                  >
+                    <tr>
+                      <img src="{{ champion.champImage }}" width="44" />
+                      <br />
+                    </tr>
+                  </div>
+                </div>
+              </table>
+            </td>
           </tr>
         </tbody>
       </table>

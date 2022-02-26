@@ -33,3 +33,11 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+.flex-table{
+  display: flex;
+  flex-flow: row wrap;
+}
+.units-row{
+  width: 150px;
+}

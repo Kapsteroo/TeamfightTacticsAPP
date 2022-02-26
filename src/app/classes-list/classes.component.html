@@ -15,7 +15,7 @@
             <th>Class</th>
             <th>Bonus</th>
             <th>Bonus description</th>
-            <th>Units</th>
+            <th class="units-row">Units</th>
           </tr>
         </thead>
         <tbody *ngFor="let class of classes">
@@ -37,7 +37,23 @@
                 </tr>
               </table>
             </td>
-            <td>champions</td>
+            <td>
+              <table class="flex-table">
+                <div *ngFor="let champion of champions">
+                  <div
+                    *ngIf="
+                      champion.class == class.name ||
+                      champion.class2 == class.name
+                    "
+                  >
+                    <tr>
+                      <img src="{{ champion.champImage }}" width="44" />
+                      <br />
+                    </tr>
+                  </div>
+                </div>
+              </table>
+            </td>
           </tr>
         </tbody>
       </table>
