@@ -1,4 +1,6 @@
 export interface Champion {
+  /** Firestore document id */
+  id?: string;
   name: string;
   cost: number;
   health: string;

@@ -1,5 +1,5 @@
-import { CdkDragDrop, copyArrayItem } from '@angular/cdk/drag-drop';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { CdkDragDrop } from '@angular/cdk/drag-drop';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Champion } from '../models/champion';
 
 @Component({
@@ -7,40 +7,30 @@ import { Champion } from '../models/champion';
   templateUrl: './square.component.html',
   styleUrls: ['./square.component.scss'],
 })
-export class SquareComponent implements OnInit {
+export class SquareComponent {
+  // cdkDropList needs an array as its data, but a square holds at most one champion.
   champions: Champion[] = [];
-  image: string;
-
-  champToEmit: Champion;
 
   @Output() eventAddChamp = new EventEmitter<Champion>();
   @Output() eventRemoveChamp = new EventEmitter<Champion>();
 
-  constructor() {}
-
-  ngOnInit(): void {}
-
-  drop(event: CdkDragDrop<Champion[]>) {
-    if (this.champions.length == 0) {
-      copyArrayItem(
-        event.previousContainer.data,
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex
-      );
-      this.image = this.champions[0].champImage;
-      this.champToEmit = this.champions[0];
-      this.emitChampion(this.champToEmit);
-    }
+  get champion(): Champion | undefined {
+    return this.champions[0];
   }
 
-  emitChampion(champ: Champion) {
+  drop(event: CdkDragDrop<Champion[]>) {
+    if (this.champion) return;
+
+    const champ = event.previousContainer.data[event.previousIndex];
+    if (!champ) return;
+    this.champions = [champ];
     this.eventAddChamp.emit(champ);
   }
 
   clearSquare() {
-    this.eventRemoveChamp.emit(this.champions[0]);
+    const champ = this.champion;
+    if (!champ) return;
     this.champions = [];
-    this.image = '';
+    this.eventRemoveChamp.emit(champ);
   }
 }

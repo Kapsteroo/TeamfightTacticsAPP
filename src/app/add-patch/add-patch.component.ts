@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { PatchService } from '../services/patch.service';
 import { Patch } from '../models/patch';
 
@@ -7,30 +7,31 @@ import { Patch } from '../models/patch';
   templateUrl: './add-patch.component.html',
   styleUrls: ['./add-patch.component.scss'],
 })
-export class AddPatchComponent implements OnInit {
-  @ViewChild('desc') inputDesc: any;
+export class AddPatchComponent {
   patch: Patch = {
     title: '',
     description: [],
   };
-  newDescription: '';
+  newDescription = '';
 
   constructor(private patchService: PatchService) {}
 
-  ngOnInit(): void {}
-
-  handleClear() {
-    this.newDescription = this.inputDesc.nativeElement.value;
-    console.log(this.newDescription);
-    this.patch.description.push(this.newDescription);
-    this.inputDesc.nativeElement.value = '';
+  addDescription() {
+    const description = this.newDescription.trim();
+    if (!description) return;
+    this.patch.description = [...this.patch.description, description];
+    this.newDescription = '';
   }
 
   onSubmit() {
-    if (this.patch.title != '') {
-      this.patchService.addPatch(this.patch);
-      this.patch.title = '';
-      this.patch.description = [];
-    }
+    const title = this.patch.title.trim();
+    if (!title) return;
+
+    this.patchService
+      .addPatch({ title, description: this.patch.description })
+      .then(() => {
+        this.patch = { title: '', description: [] };
+      })
+      .catch((error) => console.error('Could not add patch', error));
   }
 }

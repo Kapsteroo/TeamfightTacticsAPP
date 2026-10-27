@@ -1,7 +1,9 @@
 export interface Class {
+  /** Firestore document id */
+  id?: string;
   name: string;
   bonus: string | undefined;
-  bonusDesc: Array<String>;
+  bonusDesc: string[];
   classImage: string;
   levels: Array<number>;
 }

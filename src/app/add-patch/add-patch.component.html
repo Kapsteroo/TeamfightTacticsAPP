@@ -2,39 +2,41 @@
   <div class="main-card-container">
     <div class="new-patch-card main-card">
       <div class="main-card-header add-patch-header">Add Patch</div>
-      <form (ngSubmit)="onSubmit()" onkeydown="return event.key != 'Enter';">
-        <mat-form-field class="" appearance="fill">
+      <form (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="fill">
           <mat-label>Patch title</mat-label>
-          <input matInput [(ngModel)]="patch.title" name="title" />
+          <input matInput [(ngModel)]="patch.title" name="title" (keydown.enter)="$event.preventDefault()" />
         </mat-form-field>
         <br />
-        <mat-form-field class="" appearance="fill">
+        <mat-form-field appearance="fill">
           <mat-label>Patch description</mat-label>
-          <input matInput #desc />
-          <!-- <input matInput (keyup.enter)="onKeyUp($event)" #desc /> -->
+          <input
+            matInput
+            [(ngModel)]="newDescription"
+            name="description"
+            (keydown.enter)="$event.preventDefault(); addDescription()"
+          />
         </mat-form-field>
         <mat-card-actions>
-          <button type="button" class="hero-btn" (click)="handleClear()">
+          <button type="button" class="hero-btn" (click)="addDescription()">
             Add description
           </button>
-          <!-- <button mat-button (click)="addDescriptionToArray($event)">Add description</button> -->
-          <button type="submit" class="hero-btn">Submit</button>
+          <button type="submit" class="hero-btn" [disabled]="!patch.title.trim()">Submit</button>
         </mat-card-actions>
       </form>
     </div>
   </div>
 
   <div class="patch-container">
-    <div *ngIf="patch.description.length > 0">
+    <div *ngIf="patch.title || patch.description.length > 0">
       <div class="main-card">
         <div class="main-card-header header-text">{{ patch.title }}</div>
         <mat-card-content>
           <div *ngFor="let description of patch.description">
             {{ description }}
-            <br />
           </div>
         </mat-card-content>
-        <mat-card-footer> Submit if you want to add new patch </mat-card-footer>
+        <mat-card-footer>Submit if you want to add new patch</mat-card-footer>
       </div>
     </div>
   </div>

@@ -2,117 +2,72 @@ import {
   Component,
   Input,
   OnChanges,
+  OnDestroy,
   OnInit,
-  SimpleChanges,
 } from '@angular/core';
+import { combineLatest, Subscription } from 'rxjs';
 import { Champion } from '../models/champion';
+import { Synergy } from '../models/synergy';
 import { ClassService } from '../services/class.service';
 import { TraitService } from '../services/trait.service';
-import { Class } from '../models/class';
-import { Trait } from '../models/trait';
-import { Synergy } from '../models/synergy';
 
 @Component({
   selector: 'app-synergy-list',
   templateUrl: './synergy-list.component.html',
   styleUrls: ['./synergy-list.component.scss'],
 })
-export class SynergyListComponent implements OnInit, OnChanges {
-  classAndTraitArray: Array<string> = [
-    'Academy',
-    'Chemtech',
-    'Clockwork',
-    'Cuddly',
-    'Enforcer',
-    'Glutton',
-    'Imperial',
-    'Mercenary',
-    'Mutant',
-    'Scrap',
-    'Sister',
-    'Socialite',
-    'Syndicate',
-    'Yordle',
-    'YordleLord',
-    'Arcanist',
-    'Assassin',
-    'Bodyguard',
-    'Bruiser',
-    'Challanger',
-    'Collosus',
-    'Enchanter',
-    'Innovator',
-    'Protector',
-    'Scholar',
-    'Sniper',
-    'Transformer',
-    'Twinshot',
-  ];
-  classesAndTraitsData: Map<string, string> = new Map();
-  classesAndTraitCounter: Map<string, number> = new Map();
-  finalMap: Map<string, Synergy> = new Map();
-  classes: Class[];
-  traits: Trait[];
-
+export class SynergyListComponent implements OnInit, OnChanges, OnDestroy {
   @Input()
-  team: Champion[];
+  team: Champion[] = [];
+
+  synergies: Array<Synergy & { name: string }> = [];
+
+  // trait/class name -> icon
+  private images = new Map<string, string>();
+  private subscription?: Subscription;
 
   constructor(
     private classService: ClassService,
     private traitService: TraitService
   ) {}
-  ngOnChanges(changes: SimpleChanges): void {
-    this.traits.forEach((traitName) => {
-      this.classesAndTraitsData.set(traitName.name, traitName.traitImage);
-    });
-    this.classes.forEach((className) => {
-      this.classesAndTraitsData.set(className.name, className.classImage);
-    });
-
-    if (changes.team) {
-      this.classesAndTraitsData.forEach(
-        (classOrTraitImage: string, classOrTraitName: string) => {
-          var counter = 0;
-          var synergy = {
-            image: '',
-            counter: 0,
-          };
-          for (let i = 0; i < changes.team.currentValue.length; i++) {
-            if (
-              classOrTraitName === changes.team.currentValue[i].class ||
-              classOrTraitName === changes.team.currentValue[i].class2 ||
-              classOrTraitName === changes.team.currentValue[i].trait ||
-              classOrTraitName === changes.team.currentValue[i].trait2
-            ) {
-              counter++;
-            }
-            synergy = {
-              image: classOrTraitImage,
-              counter: counter,
-            };
-          }
-          this.classesAndTraitCounter.set(classOrTraitName, counter);
-          this.finalMap.set(classOrTraitName, synergy);
-        }
-      );
-      console.log(this.finalMap);
-    }
-    // console.log(this.TraitsAndClassesMap);
-    // console.log(this.classesAndTraitsData);
-    // console.log(this.classesAndTraitCounter);
-    console.log(this.classesAndTraitCounter);
-  }
 
   ngOnInit(): void {
-    this.classService.getClasses().subscribe((classes) => {
-      this.classes = classes;
-    });
-    this.traitService.getTraits().subscribe((traits) => {
-      this.traits = traits;
+    this.subscription = combineLatest([
+      this.traitService.getTraits(),
+      this.classService.getClasses(),
+    ]).subscribe(([traits, classes]) => {
+      this.images = new Map([
+        ...traits.map((t): [string, string] => [t.name, t.traitImage]),
+        ...classes.map((c): [string, string] => [c.name, c.classImage]),
+      ]);
+      this.updateSynergies();
     });
   }
 
-  showArray() {
-    console.log(this.classesAndTraitsData);
+  ngOnChanges(): void {
+    this.updateSynergies();
+  }
+
+  ngOnDestroy(): void {
+    this.subscription?.unsubscribe();
+  }
+
+  private updateSynergies(): void {
+    const counters = new Map<string, number>();
+    // Like in the game, the same champion placed twice only counts once.
+    const uniqueChampions = new Map<string, Champion>();
+    (this.team ?? []).forEach((c) => uniqueChampions.set(c.name, c));
+
+    uniqueChampions.forEach((champ) => {
+      [champ.trait, champ.trait2, champ.class, champ.class2]
+        .filter((name): name is string => !!name)
+        .forEach((name) => counters.set(name, (counters.get(name) ?? 0) + 1));
+    });
+
+    this.synergies = Array.from(counters, ([name, counter]) => ({
+      name,
+      counter,
+      image: this.images.get(name) ?? '',
+    })).sort((a, b) => b.counter - a.counter || a.name.localeCompare(b.name));
   }
 }

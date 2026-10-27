@@ -1,24 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>builder</title>
-  </head>
-  <body>
-    <div class="drag-drop-container" cdkDropListGroup>
-      <div class="board-container">
-        <!-- <div class="side-list">SYNERGY LIST</div> -->
-        <app-board 
-        > </app-board>
-        <!-- <app-save-team></app-save-team> -->
-      </div>
-      <div class="champ-chooser" cdkDropList [cdkDropListData]="champions">
-        <div class="champ-list" *ngFor="let champion of champions" cdkDrag>
-          <img src="{{ champion.champImage }}" width="56" />
-        </div>
-      </div>
+<div class="drag-drop-container" cdkDropListGroup>
+  <div class="board-container">
+    <app-board></app-board>
+  </div>
+  <div
+    *ngIf="champions$ | async as champions"
+    class="champ-chooser"
+    cdkDropList
+    cdkDropListSortingDisabled
+    [cdkDropListData]="champions"
+  >
+    <div class="champ-list" *ngFor="let champion of champions" cdkDrag>
+      <img [src]="champion.champImage" [alt]="champion.name" [title]="champion.name" width="56" />
     </div>
-  </body>
-</html>
+  </div>
+</div>

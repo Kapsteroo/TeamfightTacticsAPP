@@ -1,90 +1,67 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <div class="main-container">
-      <div class="champ-container main-card">
-        <div class="champ-card-header main-card-header">SELECT CHAMPION</div>
-        <div class="top-distance">
-          <ul *ngFor="let champion of champions">
-            <button (click)="chooseChampion(champion)">
-              <img src="{{ champion.champImage }}" width="56" />
-            </button>
+<div class="main-container">
+  <div class="champ-container main-card">
+    <div class="champ-card-header main-card-header">SELECT CHAMPION</div>
+    <div class="top-distance">
+      <ul *ngFor="let champion of champions">
+        <button type="button" (click)="chooseChampion(champion)" [title]="champion.name">
+          <img [src]="champion.champImage" [alt]="champion.name" width="56" />
+        </button>
+      </ul>
+    </div>
+  </div>
+  <div
+    class="champ-info-container main-card"
+    *ngIf="chosenChampion"
+  >
+    <div class="champ-card-header main-card-header">CHAMPION INFO</div>
+    <div>
+      <div class="champ-info-header top-distance">
+        <img src="{{ chosenChampion.champImage }}" width="100" />
+        <span class="champ-name">{{ chosenChampion.name }}</span>
+        <span class="trait-name" *ngFor="let synergy of synergies"
+          ><img [src]="synergy.image" [alt]="synergy.name" />
+          {{ synergy.name }}
+        </span>
+      </div>
+      <div class="champ-stats-container">
+        <div class="champ-stats">
+          <b>STATS</b>
+          <ul>
+            <li>Cost: {{ chosenChampion.cost }}</li>
+            <li>Health: {{ chosenChampion.health }}</li>
+            <li>Mana: {{ chosenChampion.mana }}</li>
+            <li>Armor: {{ chosenChampion.armor }}</li>
+            <li>Magic Resistance: {{ chosenChampion.mr }}</li>
+            <li>DPS: {{ chosenChampion.dps }}</li>
+            <li>Damage: {{ chosenChampion.damage }}</li>
+            <li>Attack Speed: {{ chosenChampion.atkspd }}</li>
+            <li>Crit Chance: {{ chosenChampion.crit }}</li>
+            <li>Range: {{ chosenChampion.range }}</li>
           </ul>
         </div>
-      </div>
-      <div
-        class="champ-info-container main-card"
-        *ngIf="chosenChampion != null"
-      >
-        <div class="champ-card-header main-card-header">CHAMPION INFO</div>
-        <div>
-          <div class="champ-info-header top-distance">
-            <img src="{{ chosenChampion.champImage }}" width="100" />
-            <span class="champ-name">{{ chosenChampion.name }}</span>
-            <span class="trait-name"
-              ><img src="{{ trait.traitImage }}" />
-              {{ trait.name }}
+        <div class="skill-info">
+          <div class="skill-info-header">
+            <span class="skill-image">
+              <img src="{{ chosenChampion.skillImage }}" />
             </span>
-            <span *ngIf="chosenChampion.trait2 != null" class="trait-name"
-              ><img src="{{ trait2.traitImage }}" />
-              {{ trait2.name }}
-            </span>
-            <span class="trait-name"
-              ><img src="{{ champClass.classImage }}" />
-              {{ champClass.name }}
-            </span>
-            <span *ngIf="chosenChampion.class2 != null" class="trait-name"
-              ><img src="{{ champClass2.classImage }}" />
-              {{ champClass2.name }}
-            </span>
+            <div class="skill-name">
+              {{ chosenChampion.skillName }}
+            </div>
           </div>
-          <div class="champ-stats-container">
-            <div class="champ-stats">
-              <b>STATS</b>
-              <ul>
-                <li>Cost: {{ chosenChampion.cost }}</li>
-                <li>Health: {{ chosenChampion.health }}</li>
-                <li>Mana: {{ chosenChampion.mana }}</li>
-                <li>Armor: {{ chosenChampion.armor }}</li>
-                <li>Magic Resistance: {{ chosenChampion.mr }}</li>
-                <li>DPS: {{ chosenChampion.dps }}</li>
-                <li>Damage: {{ chosenChampion.damage }}</li>
-                <li>Attack Speed: {{ chosenChampion.atkspd }}</li>
-                <li>Crit Chance: {{ chosenChampion.crit }}</li>
-                <li>Range: {{ chosenChampion.range }}</li>
-              </ul>
-            </div>
-            <div class="skill-info">
-              <div class="skill-info-header">
-                <span class="skill-image">
-                  <img src="{{ chosenChampion.skillImage }}" />
-                </span>
-                <div class="skill-name">
-                  {{ chosenChampion.skillName }}
-                </div>
-              </div>
-              <div class="skill-description">
-                {{ chosenChampion.skillDesc }}
-              </div>
-              <div
-                class="skill-more-info"
-                *ngFor="let info of chosenChampion.skillInfo"
-              >
-                {{ info }}
-              </div>
-            </div>
+          <div class="skill-description">
+            {{ chosenChampion.skillDesc }}
+          </div>
+          <div
+            class="skill-more-info"
+            *ngFor="let info of chosenChampion.skillInfo"
+          >
+            {{ info }}
           </div>
         </div>
       </div>
-      <div class="select-champ-info main-card" *ngIf="chosenChampion == null">
-        <div class="champ-card-header main-card-header">SELECT A CHAMPION</div>
-      </div>
     </div>
-  </body>
-</html>
+  </div>
+  <div class="select-champ-info main-card" *ngIf="!chosenChampion">
+    <div class="champ-card-header main-card-header">SELECT A CHAMPION</div>
+  </div>
+</div>

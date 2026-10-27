@@ -1,62 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>classes</title>
-  </head>
-  <body>
-    <div class="tables-container">
-      <table class="trait-table center">
-        <thead>
-          <tr>
-            <th></th>
-            <th>Class</th>
-            <th>Bonus</th>
-            <th>Bonus description</th>
-            <th class="units-row">Units</th>
-          </tr>
-        </thead>
-        <tbody *ngFor="let class of classes">
-          <tr>
-            <td>
-              <img src="{{class.classImage}}">
-            </td>
-            <td>
-              <b>{{ class.name }}</b>
-            </td>
-            <td>{{ class.bonus }}</td>
-            <td>
-              <table>
-                <tr *ngFor="let bonusDesc of class.bonusDesc">
-                  {{
-                    bonusDesc
-                  }}
-                  <br />
-                </tr>
-              </table>
-            </td>
-            <td>
-              <table class="flex-table">
-                <div *ngFor="let champion of champions">
-                  <div
-                    *ngIf="
-                      champion.class == class.name ||
-                      champion.class2 == class.name
-                    "
-                  >
-                    <tr>
-                      <img src="{{ champion.champImage }}" width="44" />
-                      <br />
-                    </tr>
-                  </div>
-                </div>
-              </table>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </body>
-</html>
+<div class="tables-container">
+  <table class="trait-table center">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Class</th>
+        <th>Bonus</th>
+        <th>Bonus description</th>
+        <th class="units-row">Units</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of rows$ | async">
+        <td>
+          <img [src]="row.class.classImage" [alt]="row.class.name" />
+        </td>
+        <td>
+          <b>{{ row.class.name }}</b>
+        </td>
+        <td>{{ row.class.bonus }}</td>
+        <td>
+          <div *ngFor="let bonusDesc of row.class.bonusDesc">{{ bonusDesc }}</div>
+        </td>
+        <td>
+          <div class="flex-table">
+            <img
+              *ngFor="let champion of row.champions"
+              [src]="champion.champImage"
+              [alt]="champion.name"
+              [title]="champion.name"
+              width="44"
+            />
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

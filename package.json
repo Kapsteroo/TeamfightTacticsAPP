@@ -7,7 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "heroku-postbuild": "ng build --prod"
+    "heroku-postbuild": "ng build",
+    "test:ci": "ng test --watch=false --browsers=ChromeHeadlessCI"
   },
   "private": true,
   "dependencies": {
@@ -24,11 +25,8 @@
     "@angular/platform-browser": "~12.2.0",
     "@angular/platform-browser-dynamic": "~12.2.0",
     "@angular/router": "~12.2.0",
-    "angularfire2": "^5.4.2",
     "express": "^4.17.3",
     "firebase": "^9.4.1",
-    "path": "^0.12.7",
-    "process": "^0.11.10",
     "rxfire": "^6.0.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
@@ -46,8 +44,7 @@
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0"
   },
-  "description": "This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.8.",
-  "main": "karma.conf.js",
+  "description": "Teamfight Tactics helper: champions, traits, classes, items, patch notes and a team composition builder (Angular + Firebase).",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Kapsteroo/TeamfightTacticsAPP.git"

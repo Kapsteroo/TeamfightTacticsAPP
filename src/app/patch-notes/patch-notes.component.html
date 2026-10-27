@@ -1,28 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-
-  <body>
-    <app-add-patch></app-add-patch>
-    <div class="patch-container">
-      <ul *ngFor="let patch of patches">
-        <div class="main-card">
-          <div class="main-card-header header-text"
-            >{{ patch.title }}
-          </div>
-          <div class="main-card">
-            <div *ngFor="let description of patch.description">
-              {{ description }}
-              <br />
-            </div>
-          </div>
+<div class="top-margin">
+  <!-- Only logged-in users get the editor; enforce the same rule in Firestore security rules. -->
+  <app-add-patch *ngIf="afAuth.user | async"></app-add-patch>
+  <div class="patch-container">
+    <div class="main-card" *ngFor="let patch of patches$ | async">
+      <div class="main-card-header header-text">{{ patch.title }}</div>
+      <div class="main-card">
+        <div *ngFor="let description of patch.description">
+          {{ description }}
         </div>
-      </ul>
+      </div>
     </div>
-  </body>
-</html>
+  </div>
+</div>

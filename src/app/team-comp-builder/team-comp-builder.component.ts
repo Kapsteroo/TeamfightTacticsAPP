@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { Champion } from '../models/champion';
+import { Component } from '@angular/core';
 import { ChampionService } from '../services/champion.service';
 
 @Component({
@@ -7,15 +6,8 @@ import { ChampionService } from '../services/champion.service';
   templateUrl: './team-comp-builder.component.html',
   styleUrls: ['./team-comp-builder.component.scss'],
 })
-export class TeamCompBuilderComponent implements OnInit {
-  champions: Champion[];
+export class TeamCompBuilderComponent {
+  champions$ = this.championService.getChampions();
 
   constructor(private championService: ChampionService) {}
-
-  ngOnInit(): void {
-    this.championService.getChampions().subscribe((champions) => {
-      this.champions = champions;
-    });
-  }
-
 }

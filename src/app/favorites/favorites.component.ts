@@ -1,33 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FavTeam } from '../models/favTeam';
 import { FavoritesService } from '../services/favorites.service';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 @Component({
   selector: 'app-favorites',
   templateUrl: './favorites.component.html',
   styleUrls: ['./favorites.component.scss'],
 })
-export class FavoritesComponent implements OnInit {
-  favTeams: FavTeam[];
+export class FavoritesComponent {
+  favTeams$ = this.favService.getFavTeams();
 
-  constructor(
-    private favService: FavoritesService,
-    public afAuth: AngularFireAuth
-  ) {}
-
-  ngOnInit(): void {
-    this.favService.getFavTeams().subscribe((favTeams) => {
-      this.favTeams = favTeams;
-    });
-  }
-
-  showTeams() {
-    console.log(this.favTeams);
-  }
+  constructor(private favService: FavoritesService) {}
 
   removeTeam(team: FavTeam) {
-    console.log(team.id);
-    this.favService.removeFavTeam(team);
+    if (!confirm('Delete this team?')) return;
+    this.favService
+      .removeFavTeam(team)
+      .catch((error) => console.error('Could not delete team', error));
   }
 }

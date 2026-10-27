@@ -1,27 +1,52 @@
 # TeamfightTacticsAPP
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.8.
+Helper app for Teamfight Tactics built with Angular 12 and Firebase (Auth + Firestore).
 
-## Development server
+Features:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+- browse champions, traits, classes and items (with item recipes),
+- patch notes (logged-in users can add new ones),
+- team composition builder with drag & drop and a live synergy counter,
+- saving favourite teams for logged-in users.
 
-## Code scaffolding
+## Requirements
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Node.js 14 (see `engines` in `package.json`). On Node 17+ the Angular 12 build needs
+`NODE_OPTIONS=--openssl-legacy-provider`.
 
-## Build
+## Development
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+```bash
+npm install
+npx ng serve          # http://localhost:4200
+```
 
-## Running unit tests
+## Build & run
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```bash
+npm run build         # output in dist/TeamfightTacticsAPP
+npm start             # serves the build with Express on $PORT (default 8080)
+```
 
-## Running end-to-end tests
+The app can also be deployed to Firebase Hosting with `npx ng deploy`.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Tests
 
-## Further help
+```bash
+npm test              # Karma in watch mode
+npm run test:ci       # single headless run
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Firestore data
+
+| Collection | Content |
+| --- | --- |
+| `champions` | champions; `trait`, `trait2`, `class`, `class2` reference trait/class documents |
+| `traits`, `classes` | synergies, document id = name |
+| `items/baseItems/baseItems`, `items/combinedItems/combinedItems` | items; `component1`/`component2` are base item ids |
+| `patches` | patch notes |
+| `favorites/{uid}/teams` | saved teams of a user |
+
+Access control (who may write `patches`, that users can only read/write their own
+`favorites/{uid}`) must be enforced with Firestore security rules. Hiding a form in the UI
+is not a security measure.

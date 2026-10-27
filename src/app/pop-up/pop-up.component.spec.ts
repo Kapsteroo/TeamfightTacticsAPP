@@ -1,4 +1,8 @@
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterTestingModule } from '@angular/router/testing';
+import { firebaseStubProviders } from '../../testing/firebase-stubs';
 
 import { PopUpComponent } from './pop-up.component';
 
@@ -8,9 +12,11 @@ describe('PopUpComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PopUpComponent ]
-    })
-    .compileComponents();
+      imports: [RouterTestingModule, FormsModule, ReactiveFormsModule],
+      declarations: [PopUpComponent],
+      providers: firebaseStubProviders,
+      schemas: [NO_ERRORS_SCHEMA],
+    }).compileComponents();
   });
 
   beforeEach(() => {

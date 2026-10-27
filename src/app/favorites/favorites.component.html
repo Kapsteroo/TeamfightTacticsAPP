@@ -1,17 +1,25 @@
 <div class="margintop">
-  <div class="teams-container">
-    <div class="team-card" *ngFor="let favTeam of favTeams">
+  <div class="teams-container" *ngIf="favTeams$ | async as favTeams">
+    <div class="team-card" *ngIf="favTeams.length === 0">
       <div class="team-card2">
         <div class="team-card-header">
-          <span class="header-text">Team ID: {{ favTeam.id }}</span>
-          <button class="hero-btn" (click)="removeTeam(favTeam)">
+          <span class="header-text">You have no saved teams yet</span>
+          <a class="hero-btn" routerLink="/team-comp-builder">BUILD A TEAM</a>
+        </div>
+      </div>
+    </div>
+    <div class="team-card" *ngFor="let favTeam of favTeams; let i = index">
+      <div class="team-card2">
+        <div class="team-card-header">
+          <span class="header-text">Team #{{ i + 1 }}</span>
+          <button type="button" class="hero-btn" (click)="removeTeam(favTeam)">
             DELETE TEAM
           </button>
         </div>
         <div class="team-card-container">
-          <div class="champions" *ngFor="let team of favTeam.team">
-            <img src="{{ team.champImage }}" width="60px" /> <br />
-            {{ team.name }}
+          <div class="champions" *ngFor="let champion of favTeam.team">
+            <img [src]="champion.champImage" [alt]="champion.name" width="60" /> <br />
+            {{ champion.name }}
           </div>
         </div>
       </div>

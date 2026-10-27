@@ -1,76 +1,71 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>items</title>
-  </head>
-  <body>
-    <div class="items-container">
-      <div class="select-item">
-        <div class="main-card">
-          <div class="items-card-header main-card-header">Base items</div>
-          <div class="top-distance">
-            <ul *ngFor="let baseItem of baseItems">
-              <button (click)="chooseItem(baseItem)">
-                <img
-                  class="image-border"
-                  src="{{ baseItem.image }}"
-                  width="48"
-                  height="48"
-                />
-              </button>
-            </ul>
-          </div>
-        </div>
-        <div class="main-card">
-          <div class="items-card-header main-card-header">Combined items</div>
-          <div class="top-distance">
-            <ul *ngFor="let combinedItem of combinedItems">
-              <button (click)="chooseItem(combinedItem)">
-                <img
-                  class="image-border"
-                  src="{{ combinedItem.image }}"
-                  width="48"
-                  height="48"
-                />
-              </button>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="items-info-container">
-        <div *ngIf="chosenItem == null" class="items-card-header main-card-header">SELECT ITEM</div>
-        <div *ngIf="chosenItem != null">
-          <div class="items-card-header main-card-header">
-            {{ chosenItem.name }}
-          </div>
-          <div class="chosen-item-content">
+<div class="items-container">
+  <div class="select-item">
+    <div class="main-card">
+      <div class="items-card-header main-card-header">Base items</div>
+      <div class="top-distance">
+        <ul *ngFor="let baseItem of baseItems">
+          <button type="button" (click)="chooseItem(baseItem)" [title]="baseItem.name">
             <img
               class="image-border"
-              src="{{ chosenItem.image }}"
-              width="100px"
-            /><br />
-            <span class="chosen-item-desc">{{ chosenItem.description }}</span>
-            <div *ngIf="chosenItem.component1 != null" font-size="52">
-              Recipe: <br />
-              <img
-                src="{{ itemComponent1.image }}"
-                class="item-image image-border"
-              />
-              <img
-                src="https://firebasestorage.googleapis.com/v0/b/teamfighttacticsapp-90379.appspot.com/o/others%2Fplus.png?alt=media&token=605c0f62-9bea-43c4-93e2-f448a1dd99d1"
-                width="70px"
-              />
-              <img
-                src="{{ itemComponent2.image }}"
-                class="item-image image-border"
-              />
-            </div>
-          </div>
+              [src]="baseItem.image"
+              [alt]="baseItem.name"
+              width="48"
+              height="48"
+            />
+          </button>
+        </ul>
+      </div>
+    </div>
+    <div class="main-card">
+      <div class="items-card-header main-card-header">Combined items</div>
+      <div class="top-distance">
+        <ul *ngFor="let combinedItem of combinedItems">
+          <button type="button" (click)="chooseItem(combinedItem)" [title]="combinedItem.name">
+            <img
+              class="image-border"
+              [src]="combinedItem.image"
+              [alt]="combinedItem.name"
+              width="48"
+              height="48"
+            />
+          </button>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="items-info-container">
+    <div *ngIf="!chosenItem" class="items-card-header main-card-header">SELECT ITEM</div>
+    <div *ngIf="chosenItem">
+      <div class="items-card-header main-card-header">
+        {{ chosenItem.name }}
+      </div>
+      <div class="chosen-item-content">
+        <img
+          class="image-border"
+          [src]="chosenItem.image"
+          [alt]="chosenItem.name"
+          width="100"
+        /><br />
+        <span class="chosen-item-desc">{{ chosenItem.description }}</span>
+        <div *ngIf="itemComponent1 && itemComponent2">
+          Recipe: <br />
+          <img
+            [src]="itemComponent1.image"
+            [alt]="itemComponent1.name"
+            class="item-image image-border"
+          />
+          <img
+            src="https://firebasestorage.googleapis.com/v0/b/teamfighttacticsapp-90379.appspot.com/o/others%2Fplus.png?alt=media&token=605c0f62-9bea-43c4-93e2-f448a1dd99d1"
+            alt="+"
+            width="70"
+          />
+          <img
+            [src]="itemComponent2.image"
+            [alt]="itemComponent2.name"
+            class="item-image image-border"
+          />
         </div>
       </div>
     </div>
-  </body>
-</html>
+  </div>
+</div>

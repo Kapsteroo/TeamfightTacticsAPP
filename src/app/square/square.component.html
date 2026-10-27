@@ -1,14 +1,10 @@
-<!-- <button
-  (click)="clearSquare()"
-  cdkDropList
-  [cdkDropListData]="champions"
-  (cdkDropListDropped)="drop($event)"
-  (cdkDropListDropped)="emitChampion($event)"
-><img [src]="image" width="84px" position="center"></button> -->
-
 <button
+  type="button"
   (click)="clearSquare()"
   cdkDropList
   [cdkDropListData]="champions"
   (cdkDropListDropped)="drop($event)"
-><img [src]="image" width="84px" position="center"></button>
+  [title]="champion ? champion.name + ' (click to remove)' : ''"
+>
+  <img *ngIf="champion" [src]="champion.champImage" [alt]="champion.name" width="84" />
+</button>

@@ -1,7 +1,9 @@
 export interface Trait {
+  /** Firestore document id */
+  id?: string;
   name: string;
   bonus: string | undefined;
-  bonusDesc: Array<String>;
+  bonusDesc: string[];
   traitImage: string;
   levels: Array<number>;
 }

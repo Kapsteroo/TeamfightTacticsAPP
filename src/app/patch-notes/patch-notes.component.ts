@@ -1,20 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { PatchService } from '../services/patch.service';
-import { Patch } from '../models/patch';
 
 @Component({
   selector: 'app-patch-notes',
   templateUrl: './patch-notes.component.html',
   styleUrls: ['./patch-notes.component.scss'],
 })
-export class PatchNotesComponent implements OnInit {
-  patches: Patch[];
+export class PatchNotesComponent {
+  patches$ = this.patchService.getPatches();
 
-  constructor(private patchService: PatchService) {}
-
-  ngOnInit(): void {
-    this.patchService.getPatches().subscribe((patches) => {
-      this.patches = patches;
-    });
-  }
+  constructor(private patchService: PatchService, public afAuth: AngularFireAuth) {}
 }

@@ -1,11 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Champion } from '../models/champion';
-import { FavTeam } from '../models/favTeam';
 import { PopUpComponent } from '../pop-up/pop-up.component';
-import { AuthService } from '../services/auth.service';
 import { FavoritesService } from '../services/favorites.service';
 
 @Component({
@@ -13,46 +10,41 @@ import { FavoritesService } from '../services/favorites.service';
   templateUrl: './board.component.html',
   styleUrls: ['./board.component.scss'],
 })
-export class BoardComponent implements OnInit {
+export class BoardComponent {
+  // Names of the grid areas defined in board.component.scss (4 rows x 7 hexes).
+  readonly squares = [
+    'a', 'b', 'c', 'd', 'e', 'f', 'g',
+    'h', 'i', 'j', 'k', 'l', 'm', 'n',
+    'o', 'p', 'q', 'r', 's', 't', 'u',
+    'w', 'x', 'y', 'z', 'z1', 'z2', 'z3',
+  ];
   team: Champion[] = [];
-  teamToSave: FavTeam = {
-    id: '',
-    team: [],
-  };
+  saving = false;
 
   constructor(
-    // private synergyList: SynergyListComponent,
-    private dialogRef: MatDialog,
+    private dialog: MatDialog,
     private favService: FavoritesService,
     public afAuth: AngularFireAuth
   ) {}
 
-  ngOnInit(): void {}
-
   addToTeam(champ: Champion): void {
     this.team = [...this.team, champ];
-    // console.log(this.team);
-    // console.log(this.authService.getUserID());
-    // this.synergyList.count();
   }
 
   removeFromTeam(champ: Champion): void {
-    if (champ) {
-      const champIndex = this.team.findIndex((c) => c === champ);
-      // this.team.splice(champIndex, 1);
-      this.team.splice(champIndex, 1);
-      this.team = [...this.team];
-    }
-    console.log(this.team);
+    const champIndex = this.team.indexOf(champ);
+    if (champIndex === -1) return;
+    this.team = this.team.filter((_, i) => i !== champIndex);
   }
 
-  saveToFavorites() {
-    if (this.team) {
-      this.teamToSave.team = this.team;
-    }
-    if (this.team.length > 0) {
-      this.favService.addFavTeam(this.teamToSave);
-      this.dialogRef.open(PopUpComponent);
-    }
+  saveToFavorites(): void {
+    if (this.team.length === 0 || this.saving) return;
+
+    this.saving = true;
+    this.favService
+      .addFavTeam({ team: this.team })
+      .then(() => this.dialog.open(PopUpComponent))
+      .catch((error) => console.error('Could not save team', error))
+      .finally(() => (this.saving = false));
   }
 }

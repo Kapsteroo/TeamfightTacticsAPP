@@ -4,7 +4,6 @@ import {
   AngularFirestoreCollection,
 } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 import { Item } from '../models/item';
 
 @Injectable({
@@ -15,16 +14,10 @@ export class BaseItemService {
   baseItems: Observable<Item[]>;
 
   constructor(public afs: AngularFirestore) {
-    this.baseItemsCollection = afs.collection('items').doc('baseItems').collection('baseItems');
-    this.baseItems = this.baseItemsCollection.snapshotChanges().pipe(
-      map((changes) => {
-        return changes.map((a) => {
-          const data = a.payload.doc.data() as Item;
-          return data;
-        });
-      })
-    );
+    this.baseItemsCollection = afs.collection('items').doc('baseItems').collection<Item>('baseItems');
+    this.baseItems = this.baseItemsCollection.valueChanges({ idField: 'id' });
   }
+
   getBaseItems() {
     return this.baseItems;
   }

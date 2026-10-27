@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { combineLatest, Subscription } from 'rxjs';
 import { Item } from '../models/item';
 import { BaseItemService } from '../services/base-item.service';
 import { CombinedItemService } from '../services/combined-item.service';
@@ -9,49 +9,44 @@ import { CombinedItemService } from '../services/combined-item.service';
   templateUrl: './items.component.html',
   styleUrls: ['./items.component.scss'],
 })
-export class ItemsComponent implements OnInit {
-  baseItems: Item[];
-  combinedItems: Item[];
-  chosenItem: Item;
-  itemComponent1: Item;
-  itemComponent2: Item;
+export class ItemsComponent implements OnInit, OnDestroy {
+  baseItems: Item[] = [];
+  combinedItems: Item[] = [];
+  chosenItem?: Item;
+  itemComponent1?: Item;
+  itemComponent2?: Item;
+
+  private subscription?: Subscription;
 
   constructor(
     private baseItemService: BaseItemService,
-    private combinedItemService: CombinedItemService,
-    public afs: AngularFirestore
+    private combinedItemService: CombinedItemService
   ) {}
 
   ngOnInit(): void {
-    this.baseItemService.getBaseItems().subscribe((baseItems) => {
+    this.subscription = combineLatest([
+      this.baseItemService.getBaseItems(),
+      this.combinedItemService.getCombinedItems(),
+    ]).subscribe(([baseItems, combinedItems]) => {
       this.baseItems = baseItems;
-    });
-    this.combinedItemService.getCombinedItems().subscribe((combinedItems) => {
       this.combinedItems = combinedItems;
+      if (this.chosenItem) this.chooseItem(this.chosenItem);
     });
+  }
+
+  ngOnDestroy(): void {
+    this.subscription?.unsubscribe();
   }
 
   chooseItem(chosenItem: Item) {
     this.chosenItem = chosenItem;
-    if (chosenItem.component1 != null) {
-      this.afs
-        .collection('items')
-        .doc('baseItems')
-        .collection('baseItems')
-        .doc(chosenItem.component1)
-        .valueChanges()
-        .subscribe((itemComponent1) => {
-          this.itemComponent1 = itemComponent1 as Item;
-        });
-      this.afs
-        .collection('items')
-        .doc('baseItems')
-        .collection('baseItems')
-        .doc(chosenItem.component2)
-        .valueChanges()
-        .subscribe((itemComponent2) => {
-          this.itemComponent2 = itemComponent2 as Item;
-        });
-    }
+    // Recipe components are stored as ids of documents in the baseItems collection.
+    this.itemComponent1 = this.findBaseItem(chosenItem.component1);
+    this.itemComponent2 = this.findBaseItem(chosenItem.component2);
+  }
+
+  private findBaseItem(id?: string): Item | undefined {
+    if (!id) return undefined;
+    return this.baseItems.find((item) => item.id === id || item.name === id);
   }
 }

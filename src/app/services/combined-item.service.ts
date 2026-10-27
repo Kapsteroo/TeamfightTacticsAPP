@@ -4,7 +4,6 @@ import {
   AngularFirestoreCollection,
 } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 import { Item } from '../models/item';
 
 @Injectable({
@@ -15,19 +14,10 @@ export class CombinedItemService {
   combinedItems: Observable<Item[]>;
 
   constructor(public afs: AngularFirestore) {
-    this.combinedItemsCollection = afs
-      .collection('items')
-      .doc('combinedItems')
-      .collection('combinedItems');
-    this.combinedItems = this.combinedItemsCollection.snapshotChanges().pipe(
-      map((changes) => {
-        return changes.map((a) => {
-          const data = a.payload.doc.data() as Item;
-          return data;
-        });
-      })
-    );
+    this.combinedItemsCollection = afs.collection('items').doc('combinedItems').collection<Item>('combinedItems');
+    this.combinedItems = this.combinedItemsCollection.valueChanges({ idField: 'id' });
   }
+
   getCombinedItems() {
     return this.combinedItems;
   }
